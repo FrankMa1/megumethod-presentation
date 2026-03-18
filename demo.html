@@ -26,15 +26,15 @@
 
     .hero { display: grid; grid-template-columns: 55% 45%; min-height: calc(100vh - 80px); position: relative; }
     .hero-left { padding: 2rem 3rem 3rem; display: flex; flex-direction: column; justify-content: center; }
-    .hero-title { font-size: 2.2rem; font-weight: 900; line-height: 1.2; color: #2d8a3e; margin-bottom: 2.5rem; text-transform: uppercase; }
+    .hero-title { font-size: 2.2rem; font-weight: 900; line-height: 1.2; color: #7b2d8e; margin-bottom: 2.5rem; text-transform: uppercase; }
     .hero-title span { font-weight: 400; }
 
     .calculator {
       background: #ffffff; border-radius: 16px 0 0 16px; padding: 2rem 2.5rem;
       box-shadow: 0 4px 30px rgba(0,0,0,0.06); flex: 1;
     }
-    .calc-question { font-size: 1.3rem; color: #6b7280; margin-bottom: 1.5rem; }
-    .calc-question strong { color: #7b2d8e; font-weight: 700; }
+    .calc-question { font-size: 1.3rem; color: #2d8a3e; margin-bottom: 1.5rem; font-weight: 700; }
+    .calc-question span { font-weight: 400; }
 
     .slider-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
     .slider-btn {
@@ -93,7 +93,7 @@
     }
 
     .discount-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-    .discount-label { font-weight: 700; font-size: 0.85rem; color: #7b2d8e; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+    .discount-label { font-weight: 700; font-size: 0.85rem; color: #2d8a3e; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
     .discount-input {
       border: none; border-bottom: 1px solid #e5e7eb; padding: 0.4rem 0;
       font-size: 0.95rem; color: #9ca3af; outline: none; font-family: inherit; width: 120px;
@@ -167,7 +167,7 @@
       <h1 class="hero-title">Nebankovní online půjčka <span>na vše,<br>co vás v životě potká</span></h1>
       <div class="calc-row">
         <div class="calculator">
-          <p class="calc-question"><strong>Kolik peněz</strong> budete potřebovat?</p>
+          <p class="calc-question"><strong>Kolik peněz</strong> <span>budete potřebovat?</span></p>
           <div class="slider-row">
             <button class="slider-btn" id="btnMinus">−</button>
             <div class="slider-track-wrapper" id="trackWrapper">
@@ -184,7 +184,7 @@
           </div>
           <div class="slider-range"><span>od 1 000 Kč</span><span>do 30 000 Kč</span></div>
           <div style="margin-top: 1rem; padding-top: 1.2rem; border-top: 1px solid #f0f0f0;">
-            <p class="calc-question"><strong>Na jak</strong> dlouho?</p>
+            <p class="calc-question"><strong>Na jak</strong> <span>dlouho?</span></p>
             <div class="slider-row">
               <button class="slider-btn" id="daysMinus">−</button>
               <div class="slider-track-wrapper" id="daysTrackWrapper">
