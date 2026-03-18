@@ -9,6 +9,20 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', system-ui, sans-serif; background: #ffffff; color: #1a1a1a; }
 
+    .page-wrapper { position: relative; min-height: 100vh; }
+
+    /* Hero image behind everything on the right */
+    .hero-bg {
+      position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+      z-index: 0; overflow: hidden;
+    }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-bg::before {
+      content: ''; position: absolute; top: 0; left: -1px;
+      width: 200px; height: 100%; background: #ffffff;
+      clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 2;
+    }
+
     .header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 3rem; position: relative; z-index: 10;
@@ -24,7 +38,7 @@
     .menu-btn { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .menu-btn span { width: 28px; height: 2.5px; background: #1a1a1a; border-radius: 2px; }
 
-    .hero { display: grid; grid-template-columns: 55% 45%; min-height: calc(100vh - 80px); position: relative; }
+    .hero { position: relative; z-index: 5; min-height: calc(100vh - 80px); }
     .hero-left { padding: 2rem 3rem 3rem; display: flex; flex-direction: column; justify-content: center; }
     .hero-title { font-size: 2.2rem; font-weight: 900; line-height: 1.2; color: #7b2d8e; margin-bottom: 2.5rem; text-transform: uppercase; }
     .hero-title span { font-weight: 400; }
@@ -124,21 +138,15 @@
     .summary-row .value { color: #6b7280; font-weight: 500; }
     .summary-row .value.green { color: #2d8a3e; font-weight: 700; }
 
-    .hero-right { position: relative; overflow: hidden; }
-    .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-right::before {
-      content: ''; position: absolute; top: 0; left: -1px;
-      width: 80px; height: 100%; background: #ffffff;
-      clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 2;
-    }
+    .hero-left { width: 55%; }
 
     .bottom-banner { text-align: center; padding: 2rem; background: #ffffff; }
     .bottom-banner h2 { font-size: 1.8rem; font-weight: 400; color: #2d8a3e; text-transform: uppercase; letter-spacing: 0.05em; }
     .bottom-banner h2 strong { font-weight: 900; font-style: italic; }
 
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { min-height: 300px; }
+      .hero-bg { width: 100%; height: 300px; position: relative; }
+      .hero-left { width: 100%; }
       .loan-summary { position: static; transform: none; margin-top: 1.5rem; }
       .header { padding: 1rem 1.5rem; }
       .hero-left { padding: 2rem 1.5rem; }
@@ -146,6 +154,10 @@
   </style>
 </head>
 <body>
+  <div class="page-wrapper">
+  <div class="hero-bg">
+    <img src="images/hero.webp" alt="Žena se psem v přírodě">
+  </div>
   <header class="header">
     <div class="logo">
       <img src="images/logo-cool-credit.dfbe1766.svg" alt="Cool Credit">
@@ -218,12 +230,10 @@
       </div>
     </div>
 
-    <div class="hero-right">
-      <img src="images/hero.webp" alt="Žena se psem v přírodě">
-    </div>
   </section>
 
   <div class="bottom-banner"><h2>Stačí opravdu <strong>málo</strong></h2></div>
+  </div><!-- /page-wrapper -->
 
   <script>
     // Amount slider
