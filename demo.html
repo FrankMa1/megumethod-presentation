@@ -24,14 +24,14 @@
     .menu-btn { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .menu-btn span { width: 28px; height: 2.5px; background: #1a1a1a; border-radius: 2px; }
 
-    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 80px); position: relative; }
+    .hero { display: grid; grid-template-columns: 55% 45%; min-height: calc(100vh - 80px); position: relative; }
     .hero-left { padding: 2rem 3rem 3rem; display: flex; flex-direction: column; justify-content: center; }
     .hero-title { font-size: 2.2rem; font-weight: 900; line-height: 1.2; color: #2d8a3e; margin-bottom: 2.5rem; text-transform: uppercase; }
     .hero-title span { font-weight: 400; }
 
     .calculator {
-      background: #ffffff; border-radius: 16px; padding: 2rem 2.5rem;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.06); max-width: 560px;
+      background: #ffffff; border-radius: 16px 0 0 16px; padding: 2rem 2.5rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06); flex: 1;
     }
     .calc-question { font-size: 1.3rem; color: #6b7280; margin-bottom: 1.5rem; }
     .calc-question strong { color: #7b2d8e; font-weight: 700; }
@@ -106,10 +106,13 @@
     }
     .cta-btn:hover { background: #a93226; }
 
+    .calc-row {
+      display: flex; align-items: flex-start; gap: 0;
+    }
     .loan-summary {
-      position: absolute; right: 50%; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.97); border-radius: 12px; padding: 1.5rem 2rem;
-      min-width: 280px; z-index: 5; box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.97); border-radius: 0 12px 12px 0; padding: 1.5rem 2rem;
+      min-width: 280px; z-index: 5; box-shadow: 4px 4px 24px rgba(0,0,0,0.08);
+      margin-top: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center;
     }
     .summary-section-title {
       font-weight: 800; font-size: 0.85rem; color: #2d8a3e; text-transform: uppercase;
@@ -162,38 +165,39 @@
   <section class="hero">
     <div class="hero-left">
       <h1 class="hero-title">Nebankovní online půjčka <span>na vše,<br>co vás v životě potká</span></h1>
-      <div class="calculator">
-        <p class="calc-question"><strong>Kolik peněz</strong> budete potřebovat?</p>
-        <div class="slider-row">
-          <button class="slider-btn" id="btnMinus">−</button>
-          <div class="slider-track-wrapper" id="trackWrapper">
-            <div class="slider-track-bg"></div>
-            <div class="slider-track-fill" id="trackFill"></div>
-            <input type="range" class="range-slider" id="amountSlider" min="1000" max="30000" step="100" value="15000">
-            <div class="slider-value-box" id="valueBox">
-              <span class="arrow" id="arrowLeft">‹</span>
-              <span id="amountDisplay">15 000 Kč</span>
-              <span class="arrow" id="arrowRight">›</span>
+      <div class="calc-row">
+        <div class="calculator">
+          <p class="calc-question"><strong>Kolik peněz</strong> budete potřebovat?</p>
+          <div class="slider-row">
+            <button class="slider-btn" id="btnMinus">−</button>
+            <div class="slider-track-wrapper" id="trackWrapper">
+              <div class="slider-track-bg"></div>
+              <div class="slider-track-fill" id="trackFill"></div>
+              <input type="range" class="range-slider" id="amountSlider" min="1000" max="30000" step="100" value="15000">
+              <div class="slider-value-box" id="valueBox">
+                <span class="arrow">‹</span>
+                <span id="amountDisplay">15 000 Kč</span>
+                <span class="arrow">›</span>
+              </div>
             </div>
+            <button class="slider-btn" id="btnPlus">+</button>
           </div>
-          <button class="slider-btn" id="btnPlus">+</button>
+          <div class="slider-range"><span>od 1 000 Kč</span><span>do 30 000 Kč</span></div>
+          <div class="discount-row">
+            <span class="discount-label">Slevový kód</span>
+            <input type="text" class="discount-input" placeholder="Zadejte">
+          </div>
+          <button class="cta-btn">Požádat →</button>
         </div>
-        <div class="slider-range"><span>od 1 000 Kč</span><span>do 30 000 Kč</span></div>
-        <div class="discount-row">
-          <span class="discount-label">Slevový kód</span>
-          <input type="text" class="discount-input" placeholder="Zadejte">
+        <div class="loan-summary" id="loanSummary">
+          <div class="summary-section-title">Půjčka</div>
+          <div class="summary-row"><span class="label">Peníze vám pošleme</span><span class="value">do 10 min</span></div>
+          <div class="summary-row"><span class="label">RPSN</span><span class="value" id="summaryRpsn">3 091 %</span></div>
+          <div class="summary-row"><span class="label">Poplatek</span><span class="value" id="summaryFee">3 750 Kč</span></div>
+          <div class="summary-section-title" style="color: #2d8a3e;">Sleva</div>
+          <div class="summary-row"><span class="label">Celkem zaplatíte</span><span class="value green" id="summaryTotal">18 750 Kč</span></div>
         </div>
-        <button class="cta-btn">Požádat →</button>
       </div>
-    </div>
-
-    <div class="loan-summary" id="loanSummary">
-      <div class="summary-section-title">Půjčka</div>
-      <div class="summary-row"><span class="label">Peníze vám pošleme</span><span class="value">do 10 min</span></div>
-      <div class="summary-row"><span class="label">RPSN</span><span class="value" id="summaryRpsn">3 091 %</span></div>
-      <div class="summary-row"><span class="label">Poplatek</span><span class="value" id="summaryFee">3 750 Kč</span></div>
-      <div class="summary-section-title" style="color: #2d8a3e;">Sleva</div>
-      <div class="summary-row"><span class="label">Celkem zaplatíte</span><span class="value green" id="summaryTotal">18 750 Kč</span></div>
     </div>
 
     <div class="hero-right">
@@ -241,6 +245,48 @@
     slider.addEventListener('input', update);
     document.getElementById('btnMinus').addEventListener('click', () => { slider.value = Math.max(MIN, parseInt(slider.value) - STEP); update(); });
     document.getElementById('btnPlus').addEventListener('click', () => { slider.value = Math.min(MAX, parseInt(slider.value) + STEP); update(); });
+
+    // Make value box draggable - forward mouse events to range input
+    let isDragging = false;
+    valueBox.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      e.preventDefault();
+      updateFromMouse(e);
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      updateFromMouse(e);
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch support for value box drag
+    valueBox.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      updateFromTouch(e);
+    }, { passive: true });
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      updateFromTouch(e);
+    }, { passive: true });
+    document.addEventListener('touchend', () => { isDragging = false; });
+
+    function updateFromMouse(e) {
+      const rect = trackWrapper.getBoundingClientRect();
+      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+      const pct = x / rect.width;
+      slider.value = Math.round((MIN + pct * (MAX - MIN)) / STEP) * STEP;
+      update();
+    }
+
+    function updateFromTouch(e) {
+      const touch = e.touches[0];
+      const rect = trackWrapper.getBoundingClientRect();
+      const x = Math.max(0, Math.min(touch.clientX - rect.left, rect.width));
+      const pct = x / rect.width;
+      slider.value = Math.round((MIN + pct * (MAX - MIN)) / STEP) * STEP;
+      update();
+    }
 
     update();
     window.addEventListener('resize', update);
