@@ -15,13 +15,13 @@
       --accent: #1a1a1a;
       --border: #e5e7eb;
       --code-bg: #f3f4f6;
-      --slide-max-width: 960px;
+      --slide-max-width: 1100px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
-      font-size: 18px;
+      font-size: 20px;
       scroll-behavior: smooth;
     }
 
@@ -62,9 +62,9 @@
       width: 100%;
     }
 
-    /* Typography */
+    /* Typography - larger for presentation readability */
     h1 {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 1.2rem;
@@ -72,33 +72,33 @@
     }
 
     h2 {
-      font-size: 2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       margin-bottom: 1.2rem;
       color: var(--text);
     }
 
     h3 {
-      font-size: 1.15rem;
+      font-size: 1.35rem;
       font-weight: 600;
       margin-bottom: 0.4rem;
       color: var(--text);
     }
 
     p, li {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       color: var(--text-muted);
     }
 
     .subtitle {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
     }
 
     /* Section label */
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--text-light);
@@ -113,9 +113,9 @@
     }
 
     .slide-inner > ul > li {
-      padding: 0.6rem 0 0.6rem 1.8rem;
+      padding: 0.7rem 0 0.7rem 1.8rem;
       position: relative;
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       color: var(--text);
     }
 
@@ -123,14 +123,15 @@
       content: '';
       position: absolute;
       left: 0;
-      top: 1.05rem;
-      width: 6px;
-      height: 6px;
+      top: 1.15rem;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--text-light);
     }
 
-    .slide-inner > ul > li .muted {
+    .slide-inner > ul > li .muted,
+    .muted {
       color: var(--text-muted);
       font-weight: 400;
     }
@@ -141,7 +142,7 @@
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
       font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text);
     }
 
@@ -156,7 +157,7 @@
     pre code {
       background: none;
       padding: 0;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       line-height: 1.7;
     }
 
@@ -178,20 +179,20 @@
     /* Icon items */
     .icon-item {
       display: flex;
-      gap: 0.8rem;
+      gap: 1rem;
       align-items: flex-start;
       margin-bottom: 1rem;
     }
 
     .icon-item .material-symbols-outlined {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: var(--text);
       flex-shrink: 0;
       margin-top: 0.1rem;
     }
 
     .icon-item p {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     .icon-item h3 {
@@ -206,16 +207,16 @@
     }
 
     th, td {
-      padding: 0.6rem 1rem;
+      padding: 0.7rem 1rem;
       text-align: left;
       border-bottom: 1px solid var(--border);
-      font-size: 1rem;
+      font-size: 1.15rem;
     }
 
     th {
       color: var(--text-light);
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -248,20 +249,20 @@
       background: var(--bg);
       padding: 0.5rem;
       color: var(--text-light);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       font-weight: 600;
     }
 
     .comparison-side h3 {
       margin-bottom: 0.8rem;
-      font-size: 1rem;
+      font-size: 1.15rem;
       color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .comparison-side p {
-      font-size: 1rem;
+      font-size: 1.15rem;
       line-height: 1.8;
     }
 
@@ -269,43 +270,14 @@
     .git-visual {
       margin: 1.5rem 0;
       font-family: 'SF Mono', monospace;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       line-height: 2.2;
-    }
-
-    .git-visual .branch-main {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .git-visual .branch-feature {
-      color: var(--text-muted);
-    }
-
-    .git-visual .commit-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--text);
-      margin: 0 4px;
-      vertical-align: middle;
-    }
-
-    .git-visual .commit-dot.feature {
-      background: var(--text-muted);
-    }
-
-    .git-visual .commit-dot.merge {
-      background: var(--text);
-      width: 12px;
-      height: 12px;
     }
 
     /* Git branch diagram */
     .git-diagram {
-      margin: 1.5rem auto;
-      max-width: 700px;
+      margin: 1rem auto;
+      max-width: 100%;
     }
 
     .git-diagram svg {
@@ -323,23 +295,23 @@
     }
 
     .flow-step {
-      padding: 0.6rem 1.2rem;
+      padding: 0.7rem 1.4rem;
       border: 1px solid var(--border);
       border-radius: 8px;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       color: var(--text);
       font-weight: 500;
     }
 
     .flow-arrow {
       color: var(--text-light);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
 
     /* Author line */
     .author {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 400;
     }
 
@@ -347,14 +319,92 @@
       color: var(--text-light);
     }
 
+    /* Avatar circles */
+    .avatars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+      overflow: hidden;
+      border: 3px solid var(--border);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-frank {
+      background: linear-gradient(135deg, #c4b5fd, #93c5fd);
+    }
+
+    .avatar-claude {
+      background: linear-gradient(135deg, #d4a574, #e8c9a0);
+    }
+
+    .avatar-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .avatar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
     /* Logo placeholder */
     .logo {
       margin-bottom: 2rem;
     }
 
-    .logo img {
-      height: 32px;
-      opacity: 0.7;
+    /* Two-column slide layout */
+    .slide-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .slide-two-col .col-left {
+      flex: 1;
+    }
+
+    .slide-two-col .col-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    /* Brand logo icons */
+    .brand-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #fff;
     }
 
     /* Link style */
@@ -365,6 +415,93 @@
     }
 
     a:hover {
+      color: var(--text-muted);
+    }
+
+    /* Agent illustration */
+    .agent-illustration {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .agent-lane {
+      flex: 1;
+      background: var(--code-bg);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .agent-lane-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .agent-task {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .agent-task.active {
+      border-color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Notion integration visual */
+    .notion-visual {
+      background: var(--code-bg);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .notion-icon-large {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+    }
+
+    /* Meme section */
+    .meme-section {
+      background: var(--code-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .meme-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .meme-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills example code */
+    .skills-file-tree {
+      background: var(--code-bg);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 1rem;
+      line-height: 1.8;
       color: var(--text-muted);
     }
 
@@ -416,32 +553,58 @@
     /* Responsive */
     @media (max-width: 768px) {
       .slide { padding: 2rem 1.5rem; }
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.5rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.7rem; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .comparison { grid-template-columns: 1fr; }
       .comparison-divider { display: none; }
+      .slide-two-col { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="deck" id="deck">
 
-    <!-- SLIDE 1: Intro -->
+    <!-- SLIDE 0: Intro -->
     <div class="slide active" data-slide="0">
       <div class="slide-inner" style="text-align:center;">
         <div class="logo">
-          <!-- Replace src with actual megumethod logo -->
-          <svg width="160" height="28" viewBox="0 0 160 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="22" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#1a1a1a">megumethod</text>
+          <!-- megumethod logo - stylized double M with heart + wordmark, black -->
+          <svg width="280" height="44" viewBox="0 0 280 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Stylized double M icon with heart fragment -->
+            <path d="M4 36V12L16 26L28 12V36" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M22 36V18L28 26" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Heart fragment in first M -->
+            <path d="M10 14C10 10 16 6 16 12C16 6 22 10 22 14" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Wordmark -->
+            <text x="42" y="32" font-family="Inter, sans-serif" font-size="24" font-weight="800" fill="#1a1a1a" letter-spacing="-0.3">megumethod</text>
           </svg>
         </div>
         <h1>Efektivní práce<br>v Claude Code</h1>
-        <p class="author" style="margin-top: 2rem;">Frank Mastil <span>&</span> Claude</p>
+        <div class="avatars">
+          <div class="avatar-group">
+            <div class="avatar avatar-frank">
+              <!-- Replace src with frank-photo.jpg -->
+              <img src="frank-photo.jpg" alt="Frank Mastil" onerror="this.style.display='none';this.parentElement.textContent='FM';">
+            </div>
+            <span class="avatar-label">Frank Mastil</span>
+          </div>
+          <span style="color: var(--text-light); font-size: 1.5rem; margin-top: -1.5rem;">&</span>
+          <div class="avatar-group">
+            <div class="avatar avatar-claude">
+              <!-- Claude logo -->
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="22" r="18" fill="#D97706" opacity="0.15"/>
+                <path d="M22 10 L26 18 L34 20 L28 26 L29 34 L22 30 L15 34 L16 26 L10 20 L18 18 Z" fill="#D97706" opacity="0.9"/>
+              </svg>
+            </div>
+            <span class="avatar-label">Claude</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 2: Úvod -->
+    <!-- SLIDE 1: Úvod -->
     <div class="slide" data-slide="1">
       <div class="slide-inner">
         <p class="section-label">Úvod</p>
@@ -452,47 +615,49 @@
           <li>Git <span class="muted">verzování a spolupráce pro designéry</span></li>
           <li>Figma <span class="muted">propojení designu s kódem a jeho limity</span></li>
         </ul>
-        <p style="margin-top: 1.5rem; font-size: 1.05rem; color: var(--text-muted);">+ řešení prototypů, Claude a jeho kontext, praktická ukázka na reálném projektu</p>
+        <p style="margin-top: 1.5rem; font-size: 1.15rem; color: var(--text-muted);">+ řešení prototypů, Claude a jeho kontext, praktická ukázka na reálném projektu</p>
       </div>
     </div>
 
-    <!-- SLIDE 3: Claude Code use cases -->
+    <!-- SLIDE 2: Claude Code use cases (větší rozestupy) -->
     <div class="slide" data-slide="2">
       <div class="slide-inner">
         <p class="section-label">Claude Code</p>
         <h2>Jak ho designéři používají</h2>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">web</span>
-          <div>
-            <h3>Rychlé prototypy z návrhu</h3>
-            <p class="muted">Popíšete co chcete, Claude vytvoří funkční HTML/CSS/JS prototyp</p>
+        <div style="margin-top: 1.5rem;">
+          <div class="icon-item" style="margin-bottom: 1.8rem;">
+            <span class="material-symbols-outlined">web</span>
+            <div>
+              <h3>Rychlé prototypy z návrhu</h3>
+              <p class="muted">Popíšete co chcete, Claude vytvoří funkční HTML/CSS/JS prototyp</p>
+            </div>
           </div>
-        </div>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">edit_note</span>
-          <div>
-            <h3>Úpravy copy a obsahu přímo v kódu</h3>
-            <p class="muted">Bez čekání na vývojáře, okamžitá iterace</p>
+          <div class="icon-item" style="margin-bottom: 1.8rem;">
+            <span class="material-symbols-outlined">edit_note</span>
+            <div>
+              <h3>Úpravy copy a obsahu přímo v kódu</h3>
+              <p class="muted">Bez čekání na vývojáře, okamžitá iterace</p>
+            </div>
           </div>
-        </div>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">animation</span>
-          <div>
-            <h3>Interakce a animace</h3>
-            <p class="muted">Micro-interakce, přechody, scroll animace v kódu</p>
+          <div class="icon-item" style="margin-bottom: 1.8rem;">
+            <span class="material-symbols-outlined">animation</span>
+            <div>
+              <h3>Interakce a animace</h3>
+              <p class="muted">Micro-interakce, přechody, scroll animace v kódu</p>
+            </div>
           </div>
-        </div>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">deployed_code</span>
-          <div>
-            <h3>Design-to-code bez handoffu</h3>
-            <p class="muted">Z Figma rovnou do funkčního kódu, sami kontrolujete výstup</p>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">deployed_code</span>
+            <div>
+              <h3>Design-to-code bez handoffu</h3>
+              <p class="muted">Z Figma rovnou do funkčního kódu, sami kontrolujete výstup</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 4: Instalace -->
+    <!-- SLIDE 3: Instalace -->
     <div class="slide" data-slide="3">
       <div class="slide-inner">
         <p class="section-label">Začínáme</p>
@@ -506,66 +671,88 @@ cd ~/muj-projekt
 
 # 3. Spusťte
 claude</code></pre>
-        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 1rem;">Potřebujete Node.js (v18+) a Anthropic účet s API klíčem.</p>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 1.1rem;">Potřebujete Node.js (v18+) a Anthropic účet s API klíčem.</p>
       </div>
     </div>
 
-    <!-- SLIDE 5: Git intro -->
+    <!-- SLIDE 4: Git intro (s logy a odkazem na instalaci) -->
     <div class="slide" data-slide="4">
       <div class="slide-inner">
-        <p class="section-label">Git</p>
-        <h2>Verzování celého projektu</h2>
-        <p style="margin-bottom: 0.5rem;">Git = historie verzí pro všechny soubory. Jako Version History ve Figmě, ale pro celý projekt.</p>
-        <table>
-          <thead>
-            <tr><th>Figma</th><th>Git</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Version History</td><td><code>git log</code></td></tr>
-            <tr><td>Save to Version History</td><td><code>git commit</code></td></tr>
-            <tr><td>Branch</td><td><code>git branch</code></td></tr>
-            <tr><td>Merge Branch</td><td><code>git merge</code></td></tr>
-          </tbody>
-        </table>
+        <div class="slide-two-col">
+          <div class="col-left">
+            <p class="section-label">Git</p>
+            <h2>Verzování celého projektu</h2>
+            <p style="margin-bottom: 0.8rem; font-size: 1.15rem;">Git = historie verzí pro všechny soubory. Jako Version History ve Figmě, ale pro celý projekt.</p>
+            <table>
+              <thead>
+                <tr><th>Figma</th><th>Git</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Version History</td><td><code>git log</code></td></tr>
+                <tr><td>Save to Version History</td><td><code>git commit</code></td></tr>
+                <tr><td>Branch</td><td><code>git branch</code></td></tr>
+                <tr><td>Merge Branch</td><td><code>git merge</code></td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: var(--code-bg); border-radius: 8px;">
+              <p style="font-size: 1rem; color: var(--text-muted); margin: 0;">
+                <strong style="color: var(--text);">Instalace:</strong><br>
+                Mac: <code>brew install git</code><br>
+                Nebo: <a href="https://git-scm.com/downloads" target="_blank">git-scm.com/downloads</a>
+              </p>
+            </div>
+          </div>
+          <div class="col-right">
+            <!-- Git logo -->
+            <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M95.3 47.3L52.7 4.7c-1.8-1.8-4.6-1.8-6.4 0l-8.8 8.8 11.2 11.2c2.6-.9 5.6-.3 7.7 1.7 2.1 2.1 2.6 5.1 1.7 7.7l10.8 10.8c2.6-.9 5.6-.3 7.7 1.7 2.9 2.9 2.9 7.7 0 10.6-2.9 2.9-7.7 2.9-10.6 0-2.2-2.2-2.7-5.5-1.5-8.2L54.2 38l-.1 28.1c.7.4 1.4.8 2 1.5 2.9 2.9 2.9 7.7 0 10.6-2.9 2.9-7.7 2.9-10.6 0-2.9-2.9-2.9-7.7 0-10.6.8-.8 1.7-1.3 2.6-1.7V37.6c-.9-.4-1.8-.9-2.6-1.7-2.3-2.3-2.7-5.6-1.5-8.3L33 16.5 4.7 44.8c-1.8 1.8-1.8 4.6 0 6.4l42.6 42.6c1.8 1.8 4.6 1.8 6.4 0l41.6-41.6c1.8-1.7 1.8-4.6 0-6.3z" fill="#F05032"/>
+            </svg>
+            <!-- GitHub logo -->
+            <svg width="80" height="80" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#1a1a1a"/>
+            </svg>
+            <p style="font-size: 0.95rem; color: var(--text-light); text-align: center;">Git + GitHub = verzování<br>a spolupráce na kódu</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 6: Git branching visual -->
+    <!-- SLIDE 5: Git branching visual (větší diagram) -->
     <div class="slide" data-slide="5">
       <div class="slide-inner">
         <p class="section-label">Git</p>
         <h2>Jak funguje větvení</h2>
         <div class="git-diagram">
-          <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg">
             <!-- Main branch line -->
-            <line x1="40" y1="60" x2="660" y2="60" stroke="#1a1a1a" stroke-width="2.5"/>
-            <text x="0" y="64" font-family="SF Mono, monospace" font-size="13" fill="#1a1a1a" font-weight="600">main</text>
+            <line x1="60" y1="70" x2="850" y2="70" stroke="#1a1a1a" stroke-width="3"/>
+            <text x="0" y="75" font-family="SF Mono, monospace" font-size="16" fill="#1a1a1a" font-weight="600">main</text>
 
             <!-- Feature branch line -->
-            <path d="M 200 60 C 220 60, 230 140, 260 140" stroke="#9ca3af" stroke-width="2.5" fill="none"/>
-            <line x1="260" y1="140" x2="500" y2="140" stroke="#9ca3af" stroke-width="2.5"/>
-            <path d="M 500 140 C 530 140, 540 60, 560 60" stroke="#9ca3af" stroke-width="2.5" fill="none"/>
-            <text x="280" y="170" font-family="SF Mono, monospace" font-size="12" fill="#9ca3af">feature/nova-sekce</text>
+            <path d="M 260 70 C 285 70, 300 170, 330 170" stroke="#9ca3af" stroke-width="3" fill="none"/>
+            <line x1="330" y1="170" x2="640" y2="170" stroke="#9ca3af" stroke-width="3"/>
+            <path d="M 640 170 C 670 170, 690 70, 720 70" stroke="#9ca3af" stroke-width="3" fill="none"/>
+            <text x="360" y="210" font-family="SF Mono, monospace" font-size="15" fill="#9ca3af">feature/nova-sekce</text>
 
             <!-- Main commits -->
-            <circle cx="100" cy="60" r="7" fill="#1a1a1a"/>
-            <circle cx="200" cy="60" r="7" fill="#1a1a1a"/>
-            <circle cx="560" cy="60" r="9" fill="#1a1a1a" stroke="#9ca3af" stroke-width="2"/>
-            <circle cx="650" cy="60" r="7" fill="#1a1a1a"/>
+            <circle cx="140" cy="70" r="9" fill="#1a1a1a"/>
+            <circle cx="260" cy="70" r="9" fill="#1a1a1a"/>
+            <circle cx="720" cy="70" r="11" fill="#1a1a1a" stroke="#9ca3af" stroke-width="2.5"/>
+            <circle cx="840" cy="70" r="9" fill="#1a1a1a"/>
 
             <!-- Feature commits -->
-            <circle cx="310" cy="140" r="6" fill="#9ca3af"/>
-            <circle cx="400" cy="140" r="6" fill="#9ca3af"/>
-            <circle cx="490" cy="140" r="6" fill="#9ca3af"/>
+            <circle cx="400" cy="170" r="8" fill="#9ca3af"/>
+            <circle cx="520" cy="170" r="8" fill="#9ca3af"/>
+            <circle cx="630" cy="170" r="8" fill="#9ca3af"/>
 
             <!-- Labels -->
-            <text x="80" y="40" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">commit</text>
-            <text x="180" y="40" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">commit</text>
-            <text x="540" y="40" font-family="Inter, sans-serif" font-size="11" fill="#1a1a1a" font-weight="600">merge</text>
-            <text x="635" y="40" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">commit</text>
-            <text x="295" y="125" font-family="Inter, sans-serif" font-size="10" fill="#9ca3af">edit</text>
-            <text x="387" y="125" font-family="Inter, sans-serif" font-size="10" fill="#9ca3af">edit</text>
-            <text x="477" y="125" font-family="Inter, sans-serif" font-size="10" fill="#9ca3af">edit</text>
+            <text x="115" y="48" font-family="Inter, sans-serif" font-size="14" fill="#6b7280">commit</text>
+            <text x="235" y="48" font-family="Inter, sans-serif" font-size="14" fill="#6b7280">commit</text>
+            <text x="695" y="48" font-family="Inter, sans-serif" font-size="14" fill="#1a1a1a" font-weight="600">merge</text>
+            <text x="820" y="48" font-family="Inter, sans-serif" font-size="14" fill="#6b7280">commit</text>
+            <text x="382" y="155" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">edit</text>
+            <text x="504" y="155" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">edit</text>
+            <text x="614" y="155" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">edit</text>
           </svg>
         </div>
         <ul>
@@ -576,12 +763,12 @@ claude</code></pre>
       </div>
     </div>
 
-    <!-- SLIDE 7: Skills -->
+    <!-- SLIDE 6: Skills (s Reddit skills) -->
     <div class="slide" data-slide="6">
       <div class="slide-inner">
         <p class="section-label">Skills</p>
         <h2>Uložené příkazy pro opakované úkoly</h2>
-        <p style="margin-bottom: 1.2rem;">Skills jsou šablony instrukcí, které Claude spustí jedním příkazem. Jako zkratky pro složitější workflows.</p>
+        <p style="margin-bottom: 1.2rem; font-size: 1.15rem;">Skills jsou šablony instrukcí, které Claude spustí jedním příkazem. Jako zkratky pro složitější workflows.</p>
         <div class="grid-2">
           <div class="icon-item">
             <span class="material-symbols-outlined">spellcheck</span>
@@ -591,17 +778,31 @@ claude</code></pre>
             </div>
           </div>
           <div class="icon-item">
-            <span class="material-symbols-outlined">accessibility_new</span>
+            <span class="material-symbols-outlined">commit</span>
             <div>
-              <h3>/check-a11y</h3>
-              <p class="muted">Audit přístupnosti, kontrasty, ARIA</p>
+              <h3>/commit-fast</h3>
+              <p class="muted">Automatický git commit s vygenerovanou zprávou</p>
             </div>
           </div>
           <div class="icon-item">
-            <span class="material-symbols-outlined">commit</span>
+            <span class="material-symbols-outlined">security</span>
             <div>
-              <h3>/commit</h3>
-              <p class="muted">Uloží změny do Gitu s popisem</p>
+              <h3>/security-check</h3>
+              <p class="muted">OWASP audit — kontrola bezpečnosti kódu</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">merge</span>
+            <div>
+              <h3>/create-pr</h3>
+              <p class="muted">Vytvoří branch, commitne, naformátuje a pošle PR</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">image</span>
+            <div>
+              <h3>/generate-assets</h3>
+              <p class="muted">Vygeneruje favicony, PWA ikony a OG obrázky</p>
             </div>
           </div>
           <div class="icon-item">
@@ -612,107 +813,203 @@ claude</code></pre>
             </div>
           </div>
         </div>
-        <p style="margin-top: 1.2rem; font-size: 0.95rem; color: var(--text-light);">Vlastní skills si definujete v projektu jako Markdown soubory.</p>
       </div>
     </div>
 
-    <!-- SLIDE 8: Agenti - bez agentů -->
+    <!-- SLIDE 7: Skills - Jak si vytvořit vlastní -->
     <div class="slide" data-slide="7">
+      <div class="slide-inner">
+        <p class="section-label">Skills</p>
+        <h2>Jak si vytvořit vlastní skill</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.15rem;">Stačí vytvořit Markdown soubor v <code>.claude/commands/</code> složce projektu.</p>
+        <div class="skills-file-tree">
+          📁 .claude/<br>
+          &nbsp;&nbsp;📁 commands/<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;📄 review-copy.md<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;📄 check-a11y.md<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;📄 generate-og-image.md
+        </div>
+        <p style="margin: 1rem 0 0.5rem; font-size: 1rem; font-weight: 600; color: var(--text);">Příklad: <code>review-copy.md</code></p>
+        <pre><code># Kontrola copy
+
+Projdi všechny texty v tomto projektu a zkontroluj:
+- Překlepy a gramatiku
+- Konzistenci terminologie
+- Správné uvozovky „české"
+- Delší texty rozděl na kratší odstavce
+
+Výstup: seznam nalezených problémů s návrhem oprav.</code></pre>
+        <p style="margin-top: 0.8rem; font-size: 1rem; color: var(--text-muted);">Pak stačí napsat <code>/review-copy</code> v Claude Code a skill se spustí.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Agenti s ilustrací -->
+    <div class="slide" data-slide="8">
       <div class="slide-inner">
         <p class="section-label">Agenti</p>
         <h2>Jak Claude zpracovává úkoly</h2>
         <div class="comparison">
           <div class="comparison-side">
             <h3>Bez agentů</h3>
-            <p>Claude zpracovává vše sekvenčně, krok za krokem. Jeden úkol najednou.</p>
-            <div style="margin-top:1rem; font-family: 'SF Mono', monospace; font-size: 0.85rem; line-height: 2.2; color: var(--text-muted);">
-              1. Přečti Figma<br>
-              2. Najdi komponenty<br>
-              3. Generuj kód<br>
-              4. Zkontroluj A11Y<br>
-              <span style="color: var(--text-light);">= jeden po druhém</span>
+            <p style="font-size: 1.1rem;">Vše sekvenčně, krok za krokem.</p>
+            <div style="margin-top:1rem;">
+              <div class="agent-task" style="opacity: 0.4;">1. Přečti Figma ✓</div>
+              <div class="agent-task" style="opacity: 0.6;">2. Najdi komponenty ✓</div>
+              <div class="agent-task active">3. Generuj kód ⏳</div>
+              <div class="agent-task" style="opacity: 0.3;">4. Zkontroluj A11Y</div>
             </div>
+            <p style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.8rem;">= jeden po druhém, pomalé</p>
           </div>
           <div class="comparison-divider"><span>vs</span></div>
           <div class="comparison-side">
             <h3>S agenty</h3>
-            <p>Claude spustí více agentů paralelně. Každý řeší jiný úkol současně.</p>
-            <div style="margin-top:1rem; font-family: 'SF Mono', monospace; font-size: 0.85rem; line-height: 2.2; color: var(--text-muted);">
-              Agent 1 → Figma + kód<br>
-              Agent 2 → Hledá komponenty<br>
-              Agent 3 → Kontroluje A11Y<br>
-              <span style="color: var(--text-light);">= vše najednou</span>
+            <p style="font-size: 1.1rem;">Více agentů paralelně, každý řeší jiný úkol.</p>
+            <div class="agent-illustration" style="margin-top:1rem;">
+              <div class="agent-lane">
+                <div class="agent-lane-title">Agent 1</div>
+                <div class="agent-task active">Figma → kód</div>
+              </div>
+              <div class="agent-lane">
+                <div class="agent-lane-title">Agent 2</div>
+                <div class="agent-task active">Komponenty</div>
+              </div>
+              <div class="agent-lane">
+                <div class="agent-lane-title">Agent 3</div>
+                <div class="agent-task active">A11Y audit</div>
+              </div>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">= vše najednou, rychlé</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Agenti - jak na to -->
+    <div class="slide" data-slide="9">
+      <div class="slide-inner">
+        <p class="section-label">Agenti</p>
+        <h2>Jak agenty v Claude Code využít</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.15rem;">Claude sám rozhodne kdy použít agenty. Stačí popsat komplexní úkol a Claude rozdělí práci.</p>
+        <pre><code># Příklad promptu který spustí agenty:
+
+"Vezmi design z Figma, vytvoř z něj React komponentu,
+ přidej dark mode variantu a zkontroluj přístupnost.
+ Výsledek commitni do nové větve."
+
+# Claude automaticky:
+# → Agent 1: Čte Figma design
+# → Agent 2: Hledá existující komponenty v kódu
+# → Agent 3: Kontroluje přístupnost
+# → Hlavní Claude: Koordinuje a skládá výsledek</code></pre>
+        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text-muted);">Agentic model se aktivuje automaticky při složitějších úkolech. Čím přesněji popíšete co chcete, tím lépe agenti pracují.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Claude + Notion (s logem a větší ilustrací) -->
+    <div class="slide" data-slide="10">
+      <div class="slide-inner">
+        <p class="section-label">Kontext</p>
+        <h2>Claude + Notion</h2>
+        <div class="notion-visual">
+          <!-- Notion icon -->
+          <svg class="notion-icon-large" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.017 4.313l55.333-4.087c6.797-.583 8.543-.19 12.817 2.917l17.663 12.443c2.913 2.14 3.883 2.723 3.883 5.053v68.243c0 4.277-1.553 6.807-6.99 7.193L24.467 99.967c-4.08.193-6.023-.39-8.16-3.113L3.3 79.94c-2.333-3.113-3.3-5.443-3.3-8.167V11.113c0-3.497 1.553-6.413 6.017-6.8z" fill="#1a1a1a"/>
+            <path d="M61.35.227l-55.333 4.087C.573 4.7-1 7.617-1 11.113v60.66c0 2.723.967 5.053 3.3 8.167l13.007 16.913c2.137 2.723 4.08 3.307 8.16 3.113l64.257-3.89c5.433-.387 6.99-2.917 6.99-7.193V20.64c0-2.21-.826-2.847-3.443-4.733L74.167 3.143C69.893.033 68.147-.36 61.35.227zM28.707 16.24c-6.177.39-7.583.487-11.107-2.14L7.987 6.84c-.97-.78-.58-1.75 1.167-1.943l51.987-3.89c5.437-.39 8.167 1.167 10.3 2.917l11.86 8.557c.58.39.777 1.167-.193 1.167l-54.01 3.113-.39-.52zM21.287 89.887V30.38c0-2.53.777-3.697 3.103-3.893L86.1 23.573c2.14-.193 3.107 1.167 3.107 3.693v59.12c0 2.53-.39 4.673-3.883 4.863l-60.377 3.5c-3.493.193-5.66-.97-3.66-4.86zm56.89-56.393c.39 1.75 0 3.5-1.75 3.697l-2.917.583v43.89c-2.53 1.36-4.86 2.14-6.8 2.14-3.107 0-3.883-.97-6.217-3.887l-19.03-29.94v28.967l6.03 1.36s0 3.5-4.857 3.5l-13.393.78c-.39-.78 0-2.723 1.357-3.11l3.497-.97V40.5L28.32 39.92c-.393-1.75.583-4.277 3.3-4.473l14.363-.97 19.793 30.33V37.777l-5.053-.583c-.39-2.143 1.163-3.7 3.103-3.893l13.91-.78z" fill="#fff"/>
+          </svg>
+          <div>
+            <p style="font-size: 1.2rem; color: var(--text); font-weight: 500; margin-bottom: 0.5rem;">Notion jako paměť pro Claude</p>
+            <p style="font-size: 1.05rem; color: var(--text-muted);">Claude si před prací ověří kontext a na konci uloží závěry. Notion slouží jako zdroj kontextu mezi sessions.</p>
+          </div>
+        </div>
+        <div class="flow-steps" style="justify-content: center;">
+          <div class="flow-step" style="background: var(--code-bg); font-weight: 600;">
+            <!-- Small Notion icon -->
+            <svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align: middle; margin-right: 6px;" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4.3l55.3-4c6.8-.6 8.5-.2 12.8 2.9l17.7 12.4c2.9 2.1 3.9 2.7 3.9 5v68.3c0 4.3-1.6 6.8-7 7.2L24.5 100c-4.1.2-6-.4-8.2-3.1L3.3 80c-2.3-3.1-3.3-5.4-3.3-8.2V11.1c0-3.5 1.6-6.4 6-6.8z" fill="#1a1a1a"/>
+            </svg>
+            Notion
+          </div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Načti kontext</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step" style="border-color: var(--text); font-weight: 600;">Pracuj</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Ulož závěry</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step" style="background: var(--code-bg); font-weight: 600;">
+            <svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align: middle; margin-right: 6px;" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4.3l55.3-4c6.8-.6 8.5-.2 12.8 2.9l17.7 12.4c2.9 2.1 3.9 2.7 3.9 5v68.3c0 4.3-1.6 6.8-7 7.2L24.5 100c-4.1.2-6-.4-8.2-3.1L3.3 80c-2.3-3.1-3.3-5.4-3.3-8.2V11.1c0-3.5 1.6-6.4 6-6.8z" fill="#1a1a1a"/>
+            </svg>
+            Notion
+          </div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 1.05rem; color: var(--text-light);">Propojení přes Notion MCP server. Claude pak pracuje s vaší dokumentací jako s vlastní pamětí.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Figma (s logem, DS, Reddit use cases) -->
+    <div class="slide" data-slide="11">
+      <div class="slide-inner">
+        <div class="slide-two-col">
+          <div class="col-left">
+            <p class="section-label">Figma</p>
+            <h2>Design do kódu</h2>
+            <p style="margin-bottom: 1rem; font-size: 1.1rem;">Propojení přes Figma MCP. Na co to designéři reálně používají:</p>
+            <div class="icon-item" style="margin-bottom: 1.2rem;">
+              <span class="material-symbols-outlined">skip_next</span>
+              <div>
+                <h3>Přeskočení Figmy u prototypů</h3>
+                <p class="muted">Stavba prototypů přímo v kódu, bez mockupů</p>
+              </div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 1.2rem;">
+              <span class="material-symbols-outlined">sync_alt</span>
+              <div>
+                <h3>Code ↔ Canvas obousměrně</h3>
+                <p class="muted">"Send this to Figma" — kód se stane editovatelnou vrstvou ve Figmě a zpět</p>
+              </div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 1.2rem;">
+              <span class="material-symbols-outlined">handshake</span>
+              <div>
+                <h3>Konec handoff friction</h3>
+                <p class="muted">Claude čte barvy, spacing, varianty přímo z Figma souboru</p>
+              </div>
+            </div>
+            <div class="icon-item">
+              <span class="material-symbols-outlined">person</span>
+              <div>
+                <h3>Designér = vlastní vývojář</h3>
+                <p class="muted">Celé projekty za 3 dny místo měsíců učení Reactu</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-right">
+            <!-- Figma logo -->
+            <svg width="64" height="88" viewBox="0 0 38 57" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#1abcfe" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
+              <path fill="#0acf83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z"/>
+              <path fill="#ff7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z"/>
+              <path fill="#f24e1e" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/>
+              <path fill="#a259ff" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/>
+            </svg>
+            <div style="background: var(--code-bg); border-radius: 10px; padding: 1.2rem; width: 100%;">
+              <p style="font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem;">Nejlepší DS pro Claude Code:</p>
+              <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin: 0;">
+                Tailwind CSS<br>
+                Shadcn/ui<br>
+                Radix UI<br>
+                Material UI<br>
+                Chakra UI
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 9: Claude + Notion -->
-    <div class="slide" data-slide="8">
-      <div class="slide-inner">
-        <p class="section-label">Kontext</p>
-        <h2>Claude + Notion</h2>
-        <p style="margin-bottom: 1rem;">Notion slouží jako zdroj kontextu a paměť mezi sessions. Claude si před prací ověří kontext a na konci uloží závěry.</p>
-        <div class="flow-steps">
-          <div class="flow-step">Notion</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">Načti kontext</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">Pracuj</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">Ulož závěry</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">Notion</div>
-        </div>
-        <ul style="margin-top: 1rem;">
-          <li>Před každým dotazem ověří, že má aktuální kontext</li>
-          <li>Stáhne si relevantní stránky z Notion</li>
-          <li>Na konci session uloží závěry a rozhodnutí zpět</li>
-        </ul>
-        <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light);">Propojení přes Notion MCP server. Claude pak pracuje s vaší dokumentací jako s vlastní pamětí.</p>
-      </div>
-    </div>
-
-    <!-- SLIDE 10: Figma -->
-    <div class="slide" data-slide="9">
-      <div class="slide-inner">
-        <p class="section-label">Figma</p>
-        <h2>Design do kódu</h2>
-        <p style="margin-bottom: 1.2rem;">Propojení přes Figma MCP. Má své limity, ale v určitých scénářích je velmi užitečné.</p>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">design_services</span>
-          <div>
-            <h3>Hotový Design System → kód</h3>
-            <p class="muted">Ideální když máte DS s definovanými komponentami</p>
-          </div>
-        </div>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">web</span>
-          <div>
-            <h3>One-pagery a landing pages</h3>
-            <p class="muted">Rychlé převedení jednoduchých stránek do funkčního kódu</p>
-          </div>
-        </div>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">touch_app</span>
-          <div>
-            <h3>Testování interakcí</h3>
-            <p class="muted">Prototypování micro-interakcí a animací v kódu</p>
-          </div>
-        </div>
-        <div class="icon-item">
-          <span class="material-symbols-outlined">code</span>
-          <div>
-            <h3>Kódové animace</h3>
-            <p class="muted">CSS/JS animace, které ve Figmě neuděláte</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 11: Shrnutí -->
-    <div class="slide" data-slide="10">
+    <!-- SLIDE 12: Shrnutí (s meme) -->
+    <div class="slide" data-slide="12">
       <div class="slide-inner">
         <p class="section-label">Shrnutí</p>
         <h2>Co jsme prošli</h2>
@@ -760,31 +1057,44 @@ claude</code></pre>
             </div>
           </div>
         </div>
-        <p style="margin-top: 1.5rem; font-size: 1.15rem; color: var(--text); font-weight: 500; text-align: center;">Teď si to ukážeme naživo.</p>
+        <div class="meme-section">
+          <div class="meme-text">"Potřebuju to do pátku."</div>
+          <div class="meme-sub">— Všichni. Vždy. Navždy.</div>
+          <div style="margin-top: 1.2rem; font-size: 3rem; line-height: 1;">
+            <span style="display: inline-block; animation: bounce 0.6s infinite alternate;">&#x1F680;</span>
+          </div>
+          <p style="margin-top: 0.8rem; font-size: 1.15rem; color: var(--text); font-weight: 600;">S Claude Code to stihnete do středy.</p>
+        </div>
+        <style>
+          @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-12px); }
+          }
+        </style>
       </div>
     </div>
 
-    <!-- SLIDE 12: Demo -->
-    <div class="slide" data-slide="11">
+    <!-- SLIDE 13: Demo -->
+    <div class="slide" data-slide="13">
       <div class="slide-inner">
         <p class="section-label">Živá ukázka</p>
         <h2>Demo</h2>
-        <p style="margin-bottom: 1.2rem;">Vezmeme hero sekci z <a href="https://coolcredit.cz" target="_blank">coolcredit.cz</a> a ukážeme celý workflow.</p>
+        <p style="margin-bottom: 1.2rem; font-size: 1.2rem;">Vezmeme hero sekci z <a href="https://coolcredit.cz" target="_blank">coolcredit.cz</a> a ukážeme celý workflow.</p>
         <ul>
           <li>Převedeme hotovou sekci do Figmy</li>
           <li>Upravíme kalkulačku ve Figmě</li>
           <li>Vrátíme úpravu zpět do kódu, funkční</li>
         </ul>
-        <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 1rem;">V demo předvedeme: Skills, Agenty, Figma tam a zpět, zápis do Notion.</p>
-        <p style="margin-top: 1rem;"><a href="demo.html" target="_blank">Otevřít ukázkovou stránku →</a></p>
+        <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 1.1rem;">V demo předvedeme: Skills, Agenty, Figma tam a zpět, zápis do Notion.</p>
+        <p style="margin-top: 1rem;"><a href="demo.html" target="_blank" style="font-size: 1.2rem;">Otevřít ukázkovou stránku →</a></p>
       </div>
     </div>
 
   </div>
 
   <!-- Navigation -->
-  <div class="slide-counter" id="counter">1 / 12</div>
-  <div class="progress" id="progress" style="width:8.33%"></div>
+  <div class="slide-counter" id="counter">1 / 14</div>
+  <div class="progress" id="progress" style="width:7.14%"></div>
   <div class="nav">
     <button onclick="prev()" aria-label="Předchozí">←</button>
     <button onclick="next()" aria-label="Další">→</button>
