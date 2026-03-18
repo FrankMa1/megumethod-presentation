@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claude Code pro designéry: Rychlejší shipping s Figma + Git + Agenty</title>
+  <title>Efektivní práce v Claude Code</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <style>
     :root {
-      --bg: #0f0f13;
-      --surface: #1a1a24;
-      --accent: #c084fc;
-      --accent-dim: #7c3aed;
-      --text: #e4e4ef;
-      --text-muted: #9494a8;
-      --success: #34d399;
-      --warning: #fbbf24;
-      --code-bg: #252535;
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --text-light: #9ca3af;
+      --accent: #1a1a1a;
+      --border: #e5e7eb;
+      --code-bg: #f3f4f6;
       --slide-max-width: 960px;
     }
 
@@ -26,14 +26,13 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow: hidden;
     }
 
-    /* Slide container */
     .deck {
       width: 100vw;
       height: 100vh;
@@ -69,35 +68,42 @@
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text);
     }
 
     h2 {
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--accent);
+      margin-bottom: 1.2rem;
+      color: var(--text);
     }
 
     h3 {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.4rem;
       color: var(--text);
     }
 
     p, li {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
     }
 
     .subtitle {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
 
     /* Bullet lists */
@@ -107,36 +113,26 @@
     }
 
     .slide-inner > ul > li {
-      padding: 0.5rem 0 0.5rem 1.8rem;
+      padding: 0.6rem 0 0.6rem 1.8rem;
       position: relative;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text);
     }
 
     .slide-inner > ul > li::before {
-      content: '▸';
+      content: '';
       position: absolute;
       left: 0;
-      color: var(--accent);
-      font-weight: bold;
+      top: 1.05rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-light);
     }
 
-    .slide-inner > ul > li ul {
-      margin-top: 0.3rem;
-    }
-
-    .slide-inner > ul > li ul li {
-      padding: 0.2rem 0 0.2rem 1.4rem;
-      position: relative;
-      font-size: 1.05rem;
+    .slide-inner > ul > li .muted {
       color: var(--text-muted);
-    }
-
-    .slide-inner > ul > li ul li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--accent-dim);
+      font-weight: 400;
     }
 
     /* Code blocks */
@@ -144,9 +140,9 @@
       background: var(--code-bg);
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
-      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.95rem;
-      color: var(--success);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text);
     }
 
     pre {
@@ -155,153 +151,221 @@
       border-radius: 10px;
       margin: 1rem 0;
       overflow-x: auto;
-      border: 1px solid #333;
     }
 
     pre code {
       background: none;
       padding: 0;
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.7;
     }
 
-    /* Cards / boxes */
-    .card {
-      background: var(--surface);
-      border: 1px solid #2a2a3a;
-      border-radius: 12px;
-      padding: 1.2rem 1.5rem;
-      margin: 0.6rem 0;
-    }
-
-    .card h3 {
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-
+    /* Grid */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
     }
 
-    /* Tags */
-    .tag {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 20px;
-      font-weight: 600;
-      margin-right: 0.4rem;
+    /* Icon items */
+    .icon-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
     }
 
-    .tag-demo {
-      background: rgba(96, 165, 250, 0.15);
-      color: #60a5fa;
+    .icon-item .material-symbols-outlined {
+      font-size: 1.5rem;
+      color: var(--text);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
     }
 
-    .tag-designer {
-      background: rgba(192, 132, 252, 0.15);
-      color: var(--accent);
-    }
-
-    .tag-exercise {
-      background: rgba(52, 211, 153, 0.15);
-      color: var(--success);
-    }
-
-    .designer-note {
-      margin-top: 1rem;
-      padding: 0.8rem 1.2rem;
-      border-left: 3px solid var(--accent);
-      background: rgba(192, 132, 252, 0.06);
-      border-radius: 0 8px 8px 0;
+    .icon-item p {
       font-size: 1rem;
     }
 
-    .designer-note::before {
-      content: '🎨 Pro designéry: ';
-      font-weight: 700;
-      color: var(--accent);
+    .icon-item h3 {
+      margin-bottom: 0.15rem;
     }
 
-    .demo-note {
-      margin-top: 0.8rem;
-      padding: 0.8rem 1.2rem;
-      border-left: 3px solid #60a5fa;
-      background: rgba(96, 165, 250, 0.06);
-      border-radius: 0 8px 8px 0;
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      padding: 0.6rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
       font-size: 1rem;
     }
 
-    .demo-note::before {
-      content: '💻 Demo: ';
-      font-weight: 700;
-      color: #60a5fa;
+    th {
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    /* Checklist */
-    .checklist li {
-      padding: 0.4rem 0 0.4rem 2rem;
+    td {
+      color: var(--text-muted);
+    }
+
+    /* Comparison layout */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .comparison-divider {
+      width: 1px;
+      height: 100%;
+      background: var(--border);
       position: relative;
-      font-size: 1.1rem;
     }
 
-    .checklist li::before {
-      content: '☐';
+    .comparison-divider span {
       position: absolute;
-      left: 0;
-      color: var(--accent);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg);
+      padding: 0.5rem;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .comparison-side h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .comparison-side p {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* Git visual */
+    .git-visual {
+      margin: 1.5rem 0;
+      font-family: 'SF Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 2.2;
+    }
+
+    .git-visual .branch-main {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .git-visual .branch-feature {
+      color: var(--text-muted);
+    }
+
+    .git-visual .commit-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--text);
+      margin: 0 4px;
+      vertical-align: middle;
+    }
+
+    .git-visual .commit-dot.feature {
+      background: var(--text-muted);
+    }
+
+    .git-visual .commit-dot.merge {
+      background: var(--text);
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Git branch diagram */
+    .git-diagram {
+      margin: 1.5rem auto;
+      max-width: 700px;
+    }
+
+    .git-diagram svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Notion flow */
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .flow-arrow {
+      color: var(--text-light);
       font-size: 1.2rem;
     }
 
-    /* Emphasis box */
-    .highlight-box {
-      background: linear-gradient(135deg, rgba(192, 132, 252, 0.1), rgba(96, 165, 250, 0.1));
-      border: 1px solid var(--accent-dim);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      text-align: center;
-    }
-
-    .highlight-box p {
-      font-size: 1.3rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    /* Timeline for demo */
-    .timeline {
-      margin-top: 1rem;
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 1rem;
-      padding: 0.6rem 0;
-      align-items: flex-start;
-    }
-
-    .timeline-time {
-      min-width: 70px;
-      font-weight: 700;
-      color: var(--accent);
-      font-family: monospace;
+    /* Author line */
+    .author {
+      color: var(--text-muted);
       font-size: 1rem;
+      font-weight: 400;
     }
 
-    .timeline-content {
-      font-size: 1.05rem;
+    .author span {
+      color: var(--text-light);
+    }
+
+    /* Logo placeholder */
+    .logo {
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      height: 32px;
+      opacity: 0.7;
+    }
+
+    /* Link style */
+    a {
       color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--text-muted);
     }
 
     /* Navigation */
@@ -315,26 +379,27 @@
     }
 
     .nav button {
-      background: var(--surface);
-      border: 1px solid #333;
+      background: var(--bg);
+      border: 1px solid var(--border);
       color: var(--text);
       padding: 0.5rem 1rem;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
       transition: background 0.2s;
     }
 
     .nav button:hover {
-      background: var(--accent-dim);
+      background: var(--code-bg);
     }
 
     .progress {
       position: fixed;
       bottom: 0;
       left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      height: 2px;
+      background: var(--text);
       transition: width 0.3s ease;
     }
 
@@ -342,46 +407,10 @@
       position: fixed;
       bottom: 1.8rem;
       left: 2rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-family: monospace;
-      z-index: 100;
-    }
-
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-
-    th, td {
-      padding: 0.6rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid #2a2a3a;
-      font-size: 1.05rem;
-    }
-
-    th {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    td {
-      color: var(--text-muted);
-    }
-
-    /* Section divider */
-    .section-label {
+      color: var(--text-light);
       font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent-dim);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+      font-family: 'SF Mono', monospace;
+      z-index: 100;
     }
 
     /* Responsive */
@@ -390,340 +419,375 @@
       h1 { font-size: 2rem; }
       h2 { font-size: 1.5rem; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .comparison { grid-template-columns: 1fr; }
+      .comparison-divider { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="deck" id="deck">
 
-    <!-- SLIDE 1: Title -->
+    <!-- SLIDE 1: Intro -->
     <div class="slide active" data-slide="0">
       <div class="slide-inner" style="text-align:center;">
-        <p class="section-label">MeguMethod</p>
-        <h1>Claude Code pro designéry</h1>
-        <p class="subtitle">Rychlejší shipping s Figma + Git + Agenty</p>
-        <div class="highlight-box">
-          <p>Méně předávání, méně ztraceného kontextu, rychlejší výsledky.</p>
+        <div class="logo">
+          <!-- Replace src with actual megumethod logo -->
+          <svg width="160" height="28" viewBox="0 0 160 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="22" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#1a1a1a">megumethod</text>
+          </svg>
         </div>
-        <p style="margin-top:2rem; color: var(--text-muted); font-size:1rem;">Použijte <code>←</code> <code>→</code> šipky pro navigaci</p>
+        <h1>Efektivní práce<br>v Claude Code</h1>
+        <p class="author" style="margin-top: 2rem;">Frank Mastil <span>&</span> Claude</p>
       </div>
     </div>
 
-    <!-- SLIDE 2: Why this matters -->
+    <!-- SLIDE 2: Úvod -->
     <div class="slide" data-slide="1">
       <div class="slide-inner">
         <p class="section-label">Úvod</p>
-        <h2>Proč je to důležité?</h2>
+        <h2>O čem si dnes povíme</h2>
         <ul>
-          <li>Designéři tráví až 30 % času předáváním práce a vysvětlováním kontextu</li>
-          <li>Claude Code propojuje Figmu přímo s kódem — bez mezikroků</li>
-          <li>Git vám dává kontrolu nad verzemi jako Figma branching, ale pro celý projekt</li>
-          <li>Agenti zvládnou rutinní úkoly paralelně — vy se soustředíte na design</li>
+          <li>Claude Code <span class="muted">a jak s ním efektivně pracovat</span></li>
+          <li>Skills <span class="muted">pro automatizaci opakovaných úkolů</span></li>
+          <li>Git <span class="muted">verzování a spolupráce pro designéry</span></li>
+          <li>Figma <span class="muted">propojení designu s kódem a jeho limity</span></li>
         </ul>
-        <div class="highlight-box" style="margin-top:1.5rem;">
-          <p>Cíl: méně schůzek, méně back-and-forth, rychlejší handoff.</p>
-        </div>
-        <div class="designer-note">Představte si to jako Figma Auto Layout, ale pro celý vývojový proces — automatizace opakujících se kroků.</div>
+        <p style="margin-top: 1.5rem; font-size: 1.05rem; color: var(--text-muted);">+ řešení prototypů, Claude a jeho kontext, praktická ukázka na reálném projektu</p>
       </div>
     </div>
 
-    <!-- SLIDE 3: Co je Claude Code -->
+    <!-- SLIDE 3: Claude Code use cases -->
     <div class="slide" data-slide="2">
       <div class="slide-inner">
-        <p class="section-label">Základy</p>
-        <h2>Co je Claude Code?</h2>
-        <ul>
-          <li>AI asistent v příkazové řádce (terminálu)</li>
-          <li>Rozumí kódu, Figma návrhům, i přirozenému jazyku</li>
-          <li>Umí číst, psát a upravovat soubory ve vašem projektu</li>
-          <li>Propojitelný s Figmou přes MCP (Model Context Protocol)</li>
-        </ul>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Co umí</h3>
-            <p>Generovat kód z designu, opravovat chyby, spouštět testy, pracovat s Gitem</p>
-          </div>
-          <div class="card">
-            <h3>Co neumí</h3>
-            <p>Nahradit vaše designové rozhodnutí — je to nástroj, ne náhrada</p>
+        <p class="section-label">Claude Code</p>
+        <h2>Jak ho designéři používají</h2>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">web</span>
+          <div>
+            <h3>Rychlé prototypy z návrhu</h3>
+            <p class="muted">Popíšete co chcete, Claude vytvoří funkční HTML/CSS/JS prototyp</p>
           </div>
         </div>
-        <div class="designer-note">Je to jako mít junior vývojáře, kterému můžete říct co chcete v přirozeném jazyce.</div>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">edit_note</span>
+          <div>
+            <h3>Úpravy copy a obsahu přímo v kódu</h3>
+            <p class="muted">Bez čekání na vývojáře, okamžitá iterace</p>
+          </div>
+        </div>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">animation</span>
+          <div>
+            <h3>Interakce a animace</h3>
+            <p class="muted">Micro-interakce, přechody, scroll animace v kódu</p>
+          </div>
+        </div>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">deployed_code</span>
+          <div>
+            <h3>Design-to-code bez handoffu</h3>
+            <p class="muted">Z Figma rovnou do funkčního kódu, sami kontrolujete výstup</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 4: Instalace Claude Code -->
+    <!-- SLIDE 4: Instalace -->
     <div class="slide" data-slide="3">
       <div class="slide-inner">
-        <p class="section-label">Nastavení</p>
+        <p class="section-label">Začínáme</p>
         <h2>Instalace Claude Code</h2>
-        <ul>
-          <li>Potřebujete: Node.js (v18+) a terminál</li>
-          <li>Mac: Terminal.app nebo iTerm2</li>
-          <li>Windows: PowerShell nebo Windows Terminal</li>
-        </ul>
+        <p style="margin-bottom: 1rem;">Vše probíhá v Terminálu na Macu. Návod: <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">docs.anthropic.com/claude-code</a></p>
         <pre><code># 1. Nainstalujte Claude Code
 npm install -g @anthropic-ai/claude-code
 
-# 2. Přejděte do svého projektu
+# 2. Přejděte do projektu
 cd ~/muj-projekt
 
-# 3. Spusťte Claude Code
+# 3. Spusťte
 claude</code></pre>
-        <div class="demo-note">Živá ukázka: otevřeme terminál, nainstalujeme a spustíme Claude Code.</div>
-        <div class="designer-note">Terminál = textová verze Finderu. Píšete příkazy místo klikání.</div>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 1rem;">Potřebujete Node.js (v18+) a Anthropic účet s API klíčem.</p>
       </div>
     </div>
 
-    <!-- SLIDE 5: Figma MCP -->
+    <!-- SLIDE 5: Git intro -->
     <div class="slide" data-slide="4">
       <div class="slide-inner">
-        <p class="section-label">Figma integrace</p>
-        <h2>Propojení Figmy s Claude Code</h2>
-        <ul>
-          <li>MCP = Most mezi Figmou a Claude Code</li>
-          <li>Claude vidí vaše návrhy, komponenty, tokeny</li>
-          <li>Generuje kód přímo z Figma komponent</li>
-        </ul>
-        <pre><code># Instalace Figma MCP pluginu
-/plugin install figma@claude-plugins-official
-
-# Po instalaci se autentizujte přes prohlížeč
-# (otevře se Figma přihlášení automaticky)</code></pre>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Co tím získáte</h3>
-            <p>Pošlete Claude odkaz na Figma frame → dostanete funkční kód</p>
-          </div>
-          <div class="card">
-            <h3>Příklad použití</h3>
-            <p>"Vezmi tento button z Figmy a vytvoř React komponentu"</p>
-          </div>
-        </div>
-        <div class="demo-note">Ukázka: nainstalujeme MCP, propojíme Figmu, vygenerujeme kód z komponenty.</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 6: Figma-to-Code flow -->
-    <div class="slide" data-slide="5">
-      <div class="slide-inner">
-        <p class="section-label">Workflow</p>
-        <h2>Figma-to-Code: Krok za krokem</h2>
-        <div class="card" style="margin-bottom:0.8rem;">
-          <h3>1. Vyberte komponentu ve Figmě</h3>
-          <p>Zkopírujte odkaz na frame nebo komponentu (pravý klik → Copy link)</p>
-        </div>
-        <div class="card" style="margin-bottom:0.8rem;">
-          <h3>2. Pošlete Claude příkaz</h3>
-          <p><code>"Podívej se na tuto Figma komponentu a vytvoř z ní React kód"</code></p>
-        </div>
-        <div class="card" style="margin-bottom:0.8rem;">
-          <h3>3. Iterujte</h3>
-          <p>"Uprav padding, přidej hover stav, použij naše design tokeny"</p>
-        </div>
-        <div class="card">
-          <h3>4. Hotovo — commitněte</h3>
-          <p>Claude může rovnou uložit změny do Gitu</p>
-        </div>
-        <div class="designer-note">Jako když dáte feedback na design — ale místo komentáře ve Figmě píšete Claude přímo co chcete změnit.</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 7: Git intro -->
-    <div class="slide" data-slide="6">
-      <div class="slide-inner">
-        <p class="section-label">Git pro designéry</p>
-        <h2>Git: Verzování pro celý projekt</h2>
-        <p style="font-size:1.2rem; color:var(--text); margin-bottom:1rem;">Git = systém verzí, jako historie ve Figmě, ale pro všechny soubory v projektu.</p>
+        <p class="section-label">Git</p>
+        <h2>Verzování celého projektu</h2>
+        <p style="margin-bottom: 0.5rem;">Git = historie verzí pro všechny soubory. Jako Version History ve Figmě, ale pro celý projekt.</p>
         <table>
           <thead>
-            <tr><th>Figma koncept</th><th>Git ekvivalent</th><th>Co to dělá</th></tr>
+            <tr><th>Figma</th><th>Git</th></tr>
           </thead>
           <tbody>
-            <tr><td>Version History</td><td><code>git log</code></td><td>Zobrazí historii změn</td></tr>
-            <tr><td>Branch</td><td><code>git branch</code></td><td>Vytvoří paralelní verzi</td></tr>
-            <tr><td>Save to Version History</td><td><code>git commit</code></td><td>Uloží snapshot změn</td></tr>
-            <tr><td>Publish Branch</td><td><code>git push</code></td><td>Nahraje na server</td></tr>
-            <tr><td>Update from Main</td><td><code>git pull</code></td><td>Stáhne nové změny</td></tr>
+            <tr><td>Version History</td><td><code>git log</code></td></tr>
+            <tr><td>Save to Version History</td><td><code>git commit</code></td></tr>
+            <tr><td>Branch</td><td><code>git branch</code></td></tr>
+            <tr><td>Merge Branch</td><td><code>git merge</code></td></tr>
           </tbody>
         </table>
-        <div class="designer-note">Pokud umíte Figma branching, rozumíte 80 % Gitu. Zbytek zvládne Claude za vás.</div>
       </div>
     </div>
 
-    <!-- SLIDE 8: Git setup -->
+    <!-- SLIDE 6: Git branching visual -->
+    <div class="slide" data-slide="5">
+      <div class="slide-inner">
+        <p class="section-label">Git</p>
+        <h2>Jak funguje větvení</h2>
+        <div class="git-diagram">
+          <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main branch line -->
+            <line x1="40" y1="60" x2="660" y2="60" stroke="#1a1a1a" stroke-width="2.5"/>
+            <text x="0" y="64" font-family="SF Mono, monospace" font-size="13" fill="#1a1a1a" font-weight="600">main</text>
+
+            <!-- Feature branch line -->
+            <path d="M 200 60 C 220 60, 230 140, 260 140" stroke="#9ca3af" stroke-width="2.5" fill="none"/>
+            <line x1="260" y1="140" x2="500" y2="140" stroke="#9ca3af" stroke-width="2.5"/>
+            <path d="M 500 140 C 530 140, 540 60, 560 60" stroke="#9ca3af" stroke-width="2.5" fill="none"/>
+            <text x="280" y="170" font-family="SF Mono, monospace" font-size="12" fill="#9ca3af">feature/nova-sekce</text>
+
+            <!-- Main commits -->
+            <circle cx="100" cy="60" r="7" fill="#1a1a1a"/>
+            <circle cx="200" cy="60" r="7" fill="#1a1a1a"/>
+            <circle cx="560" cy="60" r="9" fill="#1a1a1a" stroke="#9ca3af" stroke-width="2"/>
+            <circle cx="650" cy="60" r="7" fill="#1a1a1a"/>
+
+            <!-- Feature commits -->
+            <circle cx="310" cy="140" r="6" fill="#9ca3af"/>
+            <circle cx="400" cy="140" r="6" fill="#9ca3af"/>
+            <circle cx="490" cy="140" r="6" fill="#9ca3af"/>
+
+            <!-- Labels -->
+            <text x="80" y="40" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">commit</text>
+            <text x="180" y="40" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">commit</text>
+            <text x="540" y="40" font-family="Inter, sans-serif" font-size="11" fill="#1a1a1a" font-weight="600">merge</text>
+            <text x="635" y="40" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">commit</text>
+            <text x="295" y="125" font-family="Inter, sans-serif" font-size="10" fill="#9ca3af">edit</text>
+            <text x="387" y="125" font-family="Inter, sans-serif" font-size="10" fill="#9ca3af">edit</text>
+            <text x="477" y="125" font-family="Inter, sans-serif" font-size="10" fill="#9ca3af">edit</text>
+          </svg>
+        </div>
+        <ul>
+          <li>Vytvoříte větev, pracujete nezávisle</li>
+          <li>Až jste spokojení, spojíte (merge) zpět</li>
+          <li>Hlavní větev (main) zůstává vždy stabilní</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Skills -->
+    <div class="slide" data-slide="6">
+      <div class="slide-inner">
+        <p class="section-label">Skills</p>
+        <h2>Uložené příkazy pro opakované úkoly</h2>
+        <p style="margin-bottom: 1.2rem;">Skills jsou šablony instrukcí, které Claude spustí jedním příkazem. Jako zkratky pro složitější workflows.</p>
+        <div class="grid-2">
+          <div class="icon-item">
+            <span class="material-symbols-outlined">spellcheck</span>
+            <div>
+              <h3>/review-copy</h3>
+              <p class="muted">Kontrola textů, překlepů a konzistence v UI</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">accessibility_new</span>
+            <div>
+              <h3>/check-a11y</h3>
+              <p class="muted">Audit přístupnosti, kontrasty, ARIA</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">commit</span>
+            <div>
+              <h3>/commit</h3>
+              <p class="muted">Uloží změny do Gitu s popisem</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">palette</span>
+            <div>
+              <h3>/update-tokens</h3>
+              <p class="muted">Hromadná aktualizace design tokenů</p>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.95rem; color: var(--text-light);">Vlastní skills si definujete v projektu jako Markdown soubory.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Agenti - bez agentů -->
     <div class="slide" data-slide="7">
       <div class="slide-inner">
-        <p class="section-label">Git pro designéry</p>
-        <h2>Git: Nastavení a základní příkazy</h2>
-        <pre><code># Nastavení identity (jednorázově)
-git config --global user.name "Vaše Jméno"
-git config --global user.email "vas@email.cz"
-
-# Základní workflow
-git status              # Co se změnilo?
-git add nazev-souboru   # Připravit ke commitu
-git commit -m "Popis"   # Uložit snapshot
-git push                # Nahrát na server</code></pre>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Lehká cesta A</h3>
-            <p>Nechcete Git? Párujte s vývojářem — vy designujete, on/ona commituje.</p>
+        <p class="section-label">Agenti</p>
+        <h2>Jak Claude zpracovává úkoly</h2>
+        <div class="comparison">
+          <div class="comparison-side">
+            <h3>Bez agentů</h3>
+            <p>Claude zpracovává vše sekvenčně, krok za krokem. Jeden úkol najednou.</p>
+            <div style="margin-top:1rem; font-family: 'SF Mono', monospace; font-size: 0.85rem; line-height: 2.2; color: var(--text-muted);">
+              1. Přečti Figma<br>
+              2. Najdi komponenty<br>
+              3. Generuj kód<br>
+              4. Zkontroluj A11Y<br>
+              <span style="color: var(--text-light);">= jeden po druhém</span>
+            </div>
           </div>
-          <div class="card">
-            <h3>Lehká cesta B</h3>
-            <p>Použijte sandbox repo — bezpečné prostředí pro experimentování bez rizika.</p>
+          <div class="comparison-divider"><span>vs</span></div>
+          <div class="comparison-side">
+            <h3>S agenty</h3>
+            <p>Claude spustí více agentů paralelně. Každý řeší jiný úkol současně.</p>
+            <div style="margin-top:1rem; font-family: 'SF Mono', monospace; font-size: 0.85rem; line-height: 2.2; color: var(--text-muted);">
+              Agent 1 → Figma + kód<br>
+              Agent 2 → Hledá komponenty<br>
+              Agent 3 → Kontroluje A11Y<br>
+              <span style="color: var(--text-light);">= vše najednou</span>
+            </div>
           </div>
         </div>
-        <div class="demo-note">Ukázka: vytvoříme branch, commitneme změnu, pushneme.</div>
       </div>
     </div>
 
-    <!-- SLIDE 9: GitHub -->
+    <!-- SLIDE 9: Claude + Notion -->
     <div class="slide" data-slide="8">
       <div class="slide-inner">
-        <p class="section-label">Spolupráce</p>
-        <h2>GitHub: Kde se potkává design a kód</h2>
-        <ul>
-          <li>GitHub = sdílené úložiště kódu (jako Figma pro soubory)</li>
-          <li>Pull Request = návrh změny ke schválení (jako Figma review)</li>
-          <li>Issues = úkoly a bugy (jako Jira nebo Linear tickets)</li>
-          <li>Actions = automatické kontroly (jako Figma pluginy, ale pro kód)</li>
-        </ul>
-        <div class="card" style="margin-top:1rem;">
-          <h3>Co potřebujete</h3>
-          <ul>
-            <li><p>GitHub účet (zdarma)</p></li>
-            <li><p>Přístup k repozitáři vašeho týmu</p></li>
-            <li><p>Claude Code umí vytvářet PR přímo z terminálu</p></li>
-          </ul>
+        <p class="section-label">Kontext</p>
+        <h2>Claude + Notion</h2>
+        <p style="margin-bottom: 1rem;">Notion slouží jako zdroj kontextu a paměť mezi sessions. Claude si před prací ověří kontext a na konci uloží závěry.</p>
+        <div class="flow-steps">
+          <div class="flow-step">Notion</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Načti kontext</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Pracuj</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Ulož závěry</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step">Notion</div>
         </div>
-        <div class="designer-note">Pull Request = "Podívejte se na mou změnu a schvalte ji" — stejný princip jako Figma review.</div>
+        <ul style="margin-top: 1rem;">
+          <li>Před každým dotazem ověří, že má aktuální kontext</li>
+          <li>Stáhne si relevantní stránky z Notion</li>
+          <li>Na konci session uloží závěry a rozhodnutí zpět</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-light);">Propojení přes Notion MCP server. Claude pak pracuje s vaší dokumentací jako s vlastní pamětí.</p>
       </div>
     </div>
 
-    <!-- SLIDE 10: Agent teams -->
+    <!-- SLIDE 10: Figma -->
     <div class="slide" data-slide="9">
       <div class="slide-inner">
-        <p class="section-label">Agenti</p>
-        <h2>Agent týmy: Paralelní práce</h2>
-        <p style="margin-bottom:1rem; color:var(--text);">Claude může spustit více agentů najednou — každý řeší jiný úkol.</p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Pattern 1: Průzkum</h3>
-            <p>Jeden agent analyzuje Figmu, druhý hledá existující komponenty v kódu</p>
-          </div>
-          <div class="card">
-            <h3>Pattern 2: Generování</h3>
-            <p>Více agentů generuje kód pro různé komponenty současně</p>
-          </div>
-          <div class="card">
-            <h3>Pattern 3: Review</h3>
-            <p>Agent kontroluje přístupnost, druhý ověřuje vizuální shodu s designem</p>
+        <p class="section-label">Figma</p>
+        <h2>Design do kódu</h2>
+        <p style="margin-bottom: 1.2rem;">Propojení přes Figma MCP. Má své limity, ale v určitých scénářích je velmi užitečné.</p>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">design_services</span>
+          <div>
+            <h3>Hotový Design System → kód</h3>
+            <p class="muted">Ideální když máte DS s definovanými komponentami</p>
           </div>
         </div>
-        <div class="designer-note">Jako když máte tři asistenty — jeden exportuje assety, druhý píše specifikace, třetí kontroluje konzistenci.</div>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">web</span>
+          <div>
+            <h3>One-pagery a landing pages</h3>
+            <p class="muted">Rychlé převedení jednoduchých stránek do funkčního kódu</p>
+          </div>
+        </div>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">touch_app</span>
+          <div>
+            <h3>Testování interakcí</h3>
+            <p class="muted">Prototypování micro-interakcí a animací v kódu</p>
+          </div>
+        </div>
+        <div class="icon-item">
+          <span class="material-symbols-outlined">code</span>
+          <div>
+            <h3>Kódové animace</h3>
+            <p class="muted">CSS/JS animace, které ve Figmě neuděláte</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- SLIDE 11: Skills -->
+    <!-- SLIDE 11: Shrnutí -->
     <div class="slide" data-slide="10">
       <div class="slide-inner">
-        <p class="section-label">Automatizace</p>
-        <h2>Skills: Automatizace opakovaných úkolů</h2>
-        <p style="margin-bottom:1rem; color:var(--text);">Skills = uložené příkazy pro věci, které děláte často. Jako Figma shortcuts, ale pro Claude.</p>
-        <div class="card" style="margin-bottom:0.5rem;"><h3>1. Korekce textů</h3><p>Automatická kontrola a oprava překlepů v UI textech</p></div>
-        <div class="card" style="margin-bottom:0.5rem;"><h3>2. Přejmenování tokenů</h3><p>Hromadný rename design tokenů v kódu i dokumentaci</p></div>
-        <div class="card" style="margin-bottom:0.5rem;"><h3>3. Kontrola přístupnosti</h3><p>Audit kontrastů, ARIA atributů a keyboard navigace</p></div>
-        <div class="card" style="margin-bottom:0.5rem;"><h3>4. Formátování specifikací</h3><p>Generování konzistentních handoff dokumentů z designu</p></div>
-        <div class="card"><h3>5. Release notes</h3><p>Automatické generování popisu změn pro každý release</p></div>
+        <p class="section-label">Shrnutí</p>
+        <h2>Co jsme prošli</h2>
+        <div class="grid-2">
+          <div class="icon-item">
+            <span class="material-symbols-outlined">terminal</span>
+            <div>
+              <h3>Claude Code</h3>
+              <p class="muted">AI asistent v terminálu, rozumí designu i kódu</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">bolt</span>
+            <div>
+              <h3>Skills</h3>
+              <p class="muted">Automatizace opakovaných úkolů jedním příkazem</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">account_tree</span>
+            <div>
+              <h3>Git</h3>
+              <p class="muted">Verzování a větve pro bezpečnou spolupráci</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">group</span>
+            <div>
+              <h3>Agenti</h3>
+              <p class="muted">Paralelní zpracování úkolů, rychlejší výsledky</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">description</span>
+            <div>
+              <h3>Notion</h3>
+              <p class="muted">Kontext a paměť mezi sessions</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <span class="material-symbols-outlined">brush</span>
+            <div>
+              <h3>Figma</h3>
+              <p class="muted">Design do kódu, prototypy, interakce</p>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 1.15rem; color: var(--text); font-weight: 500; text-align: center;">Teď si to ukážeme naživo.</p>
       </div>
     </div>
 
-    <!-- SLIDE 12: Live demo script -->
+    <!-- SLIDE 12: Demo -->
     <div class="slide" data-slide="11">
       <div class="slide-inner">
         <p class="section-label">Živá ukázka</p>
-        <h2>Demo: 20minutový průvodce</h2>
-        <div class="timeline">
-          <div class="timeline-item"><span class="timeline-time">0:00</span><span class="timeline-content">Otevřeme terminál, spustíme <code>claude</code></span></div>
-          <div class="timeline-item"><span class="timeline-time">2:00</span><span class="timeline-content">Instalace Figma MCP: <code>/plugin install figma@claude-plugins-official</code></span></div>
-          <div class="timeline-item"><span class="timeline-time">4:00</span><span class="timeline-content">Autentizace Figma — prohlížeč se otevře automaticky</span></div>
-          <div class="timeline-item"><span class="timeline-time">5:00</span><span class="timeline-content">Zkopírujeme odkaz na komponentu ve Figmě</span></div>
-          <div class="timeline-item"><span class="timeline-time">7:00</span><span class="timeline-content">Pošleme Claude: "Vytvoř React komponentu z tohoto Figma framu"</span></div>
-          <div class="timeline-item"><span class="timeline-time">10:00</span><span class="timeline-content">Iterace: "Uprav barvy podle našich tokenů, přidej dark mode"</span></div>
-          <div class="timeline-item"><span class="timeline-time">13:00</span><span class="timeline-content">Git workflow: <code>git add</code>, <code>commit</code>, <code>push</code></span></div>
-          <div class="timeline-item"><span class="timeline-time">15:00</span><span class="timeline-content">Vytvoření Pull Requestu přímo z Claude</span></div>
-          <div class="timeline-item"><span class="timeline-time">17:00</span><span class="timeline-content">Spustíme agenta na kontrolu přístupnosti</span></div>
-          <div class="timeline-item"><span class="timeline-time">19:00</span><span class="timeline-content">Shrnutí a Q&amp;A</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 13: Troubleshooting -->
-    <div class="slide" data-slide="12">
-      <div class="slide-inner">
-        <p class="section-label">Řešení problémů</p>
-        <h2>Časté problémy a řešení</h2>
-        <table>
-          <thead>
-            <tr><th>Problém</th><th>Řešení</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Figma autentizace nefunguje</td><td>Odhlaste se a znovu přihlaste; zkontrolujte povolení v Figma settings</td></tr>
-            <tr><td>Nemám přístup k repozitáři</td><td>Požádejte tech lead o přidání do GitHub organizace</td></tr>
-            <tr><td>Nevím na jaké jsem větvi</td><td>Spusťte <code>git branch</code> — aktuální má hvězdičku *</td></tr>
-            <tr><td>Push se nezdařil</td><td>Pravděpodobně nemáte poslední změny: <code>git pull</code> a zkuste znovu</td></tr>
-            <tr><td>Claude nerozumí mému designu</td><td>Pošlete odkaz na konkrétní frame, ne celou stránku</td></tr>
-          </tbody>
-        </table>
-        <div class="designer-note">Většinu problémů vyřeší restart Claude Code příkazem <code>claude</code> v terminálu.</div>
-      </div>
-    </div>
-
-    <!-- SLIDE 14: Checklist + summary -->
-    <div class="slide" data-slide="13">
-      <div class="slide-inner">
-        <p class="section-label">Závěr</p>
-        <h2>Setup checklist</h2>
-        <div class="grid-2">
-          <div>
-            <h3>Před začátkem</h3>
-            <ul class="checklist">
-              <li>Node.js nainstalován (v18+)</li>
-              <li>Claude Code nainstalován</li>
-              <li>Figma MCP plugin nainstalován</li>
-              <li>Git nainstalován a nastaven</li>
-              <li>GitHub účet a přístup k repo</li>
-            </ul>
-          </div>
-          <div>
-            <h3 style="color:var(--warning);">Top 3 — Pokud uděláte jen tohle</h3>
-            <div class="card" style="border-color:var(--warning);">
-              <p><strong>1.</strong> Nainstalujte Claude Code a Figma MCP</p>
-            </div>
-            <div class="card" style="border-color:var(--warning);">
-              <p><strong>2.</strong> Zkuste jeden Figma-to-code flow na reálné komponentě</p>
-            </div>
-            <div class="card" style="border-color:var(--warning);">
-              <p><strong>3.</strong> Naučte se <code>git add</code>, <code>commit</code>, <code>push</code></p>
-            </div>
-          </div>
-        </div>
-        <div class="highlight-box" style="margin-top:1.5rem;">
-          <p>Začněte malým krokem. Jeden workflow. Jeden commit. Jeden úspěch.</p>
-        </div>
+        <h2>Demo</h2>
+        <p style="margin-bottom: 1.2rem;">Vezmeme hero sekci z <a href="https://coolcredit.cz" target="_blank">coolcredit.cz</a> a ukážeme celý workflow.</p>
+        <ul>
+          <li>Převedeme hotovou sekci do Figmy</li>
+          <li>Upravíme kalkulačku ve Figmě</li>
+          <li>Vrátíme úpravu zpět do kódu, funkční</li>
+        </ul>
+        <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 1rem;">V demo předvedeme: Skills, Agenty, Figma tam a zpět, zápis do Notion.</p>
+        <p style="margin-top: 1rem;"><a href="demo.html" target="_blank">Otevřít ukázkovou stránku →</a></p>
       </div>
     </div>
 
   </div>
 
   <!-- Navigation -->
-  <div class="slide-counter" id="counter">1 / 14</div>
-  <div class="progress" id="progress" style="width:7.14%"></div>
+  <div class="slide-counter" id="counter">1 / 12</div>
+  <div class="progress" id="progress" style="width:8.33%"></div>
   <div class="nav">
-    <button onclick="prev()" aria-label="Předchozí">← Zpět</button>
-    <button onclick="next()" aria-label="Další">Další →</button>
+    <button onclick="prev()" aria-label="Předchozí">←</button>
+    <button onclick="next()" aria-label="Další">→</button>
   </div>
 
   <script>
@@ -750,7 +814,6 @@ git push                # Nahrát na server</code></pre>
       if (e.key === 'End') { e.preventDefault(); go(total - 1); }
     });
 
-    // Touch support
     let touchStartX = 0;
     document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
     document.addEventListener('touchend', (e) => {

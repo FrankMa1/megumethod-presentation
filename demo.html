@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Credit - Demo Hero</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #2d8a3e;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .phone {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #7b2d8e;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .phone svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .login-link {
+      color: #7b2d8e;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .menu-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .menu-btn span {
+      width: 28px;
+      height: 2.5px;
+      background: #1a1a1a;
+      border-radius: 2px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 80px);
+      position: relative;
+    }
+
+    .hero-left {
+      padding: 2rem 3rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #2d8a3e;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title strong {
+      font-weight: 900;
+      display: block;
+    }
+
+    /* Calculator card */
+    .calculator {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+      max-width: 520px;
+    }
+
+    .calc-question {
+      font-size: 1.2rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-question strong {
+      color: #7b2d8e;
+      font-weight: 700;
+    }
+
+    /* Slider area */
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .slider-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #e5e7eb;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #9ca3af;
+      transition: border-color 0.2s;
+    }
+
+    .slider-btn:hover {
+      border-color: #7b2d8e;
+      color: #7b2d8e;
+    }
+
+    .slider-container {
+      flex: 1;
+      position: relative;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .slider-track {
+      width: 100%;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .slider-fill {
+      height: 100%;
+      background: #7b2d8e;
+      border-radius: 3px;
+      width: 43%;
+      transition: width 0.2s;
+    }
+
+    .slider-value {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.4rem 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      min-width: 120px;
+      justify-content: center;
+    }
+
+    .slider-value .arrow {
+      color: #9ca3af;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .slider-range {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Discount code */
+    .discount-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .discount-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #7b2d8e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .discount-input {
+      border: none;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      color: #9ca3af;
+      outline: none;
+      font-family: inherit;
+      width: 120px;
+    }
+
+    /* CTA button */
+    .cta-btn {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: background 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #a93226;
+    }
+
+    /* Loan summary */
+    .loan-summary {
+      position: absolute;
+      right: 52%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      min-width: 260px;
+      z-index: 5;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.35rem 0;
+      font-size: 0.9rem;
+    }
+
+    .summary-row .label {
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .summary-row .label.bold {
+      font-weight: 700;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .summary-row .value {
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .summary-row .value.green {
+      color: #2d8a3e;
+      font-weight: 700;
+    }
+
+    /* Hero right - image */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Placeholder gradient simulating the woman+dog image */
+      background: linear-gradient(135deg, #e8d5a3 0%, #c9a96e 30%, #8b6914 60%, #4a6741 100%);
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(150deg, #f0e6c8 0%, #d4b87a 25%, #a67c3d 50%, #6b8f5e 75%, #3d6b35 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-placeholder span {
+      background: rgba(255,255,255,0.8);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Bottom banner */
+    .bottom-banner {
+      text-align: center;
+      padding: 2rem;
+      background: #f5f5f0;
+    }
+
+    .bottom-banner h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .bottom-banner h2 strong {
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 300px; }
+      .loan-summary { position: static; transform: none; margin-top: 1.5rem; }
+      .header { padding: 1rem 1.5rem; }
+      .hero-left { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <!-- Simplified tree icon -->
+        <circle cx="20" cy="12" r="10" fill="#2d8a3e" opacity="0.3"/>
+        <circle cx="14" cy="16" r="8" fill="#2d8a3e" opacity="0.4"/>
+        <circle cx="26" cy="16" r="8" fill="#2d8a3e" opacity="0.4"/>
+        <circle cx="20" cy="10" r="7" fill="#2d8a3e" opacity="0.5"/>
+        <rect x="18.5" y="20" width="3" height="12" rx="1.5" fill="#5a3e1b"/>
+        <line x1="15" y1="35" x2="25" y2="35" stroke="#5a3e1b" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">Cool<br>Credit</div>
+    </div>
+    <div class="header-right">
+      <a href="tel:226219946" class="phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        226 219 946
+      </a>
+      <a href="#" class="login-link">Přihlášení</a>
+      <div class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">
+        Půjčka na splátky<br>
+        <strong>jednoduše</strong>
+      </h1>
+
+      <div class="calculator">
+        <p class="calc-question"><strong>Kolik peněz</strong> budete potřebovat?</p>
+
+        <div class="slider-row">
+          <button class="slider-btn" id="btnMinus">−</button>
+          <div class="slider-container">
+            <div class="slider-track">
+              <div class="slider-fill" id="sliderFill"></div>
+            </div>
+          </div>
+          <div class="slider-value">
+            <span class="arrow" id="arrowLeft">‹</span>
+            <span id="amountDisplay">15 000 Kč</span>
+            <span class="arrow" id="arrowRight">›</span>
+          </div>
+          <button class="slider-btn" id="btnPlus">+</button>
+        </div>
+
+        <div class="slider-range">
+          <span>od 7 500 Kč</span>
+          <span>do 25 000 Kč</span>
+        </div>
+
+        <div class="discount-row">
+          <span class="discount-label">Slevový kód</span>
+          <input type="text" class="discount-input" placeholder="Zadejte">
+        </div>
+
+        <button class="cta-btn">Požádat →</button>
+      </div>
+    </div>
+
+    <!-- Loan summary overlay -->
+    <div class="loan-summary" id="loanSummary">
+      <div class="summary-row">
+        <span class="label bold">Půjčka</span>
+        <span class="value green" id="summaryAmount">15 000 Kč</span>
+      </div>
+      <div class="summary-row">
+        <span class="label">RPSN</span>
+        <span class="value" id="summaryRpsn">3 091 %</span>
+      </div>
+      <div class="summary-row">
+        <span class="label bold">Sleva</span>
+        <span class="value green">0 Kč</span>
+      </div>
+      <div class="summary-row">
+        <span class="label">Celkem zaplatíte</span>
+        <span class="value" id="summaryTotal">26 250 Kč</span>
+      </div>
+      <div class="summary-row">
+        <span class="label">Měsíční splátka</span>
+        <span class="value" id="summaryMonthly">8 750 Kč</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-image-placeholder">
+        <span>Obrázek: žena se psem v přírodě</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom banner -->
+  <div class="bottom-banner">
+    <h2>Stačí opravdu <strong>málo</strong></h2>
+  </div>
+
+  <script>
+    const MIN = 7500;
+    const MAX = 25000;
+    const STEP = 500;
+    let amount = 15000;
+
+    const amountDisplay = document.getElementById('amountDisplay');
+    const summaryAmount = document.getElementById('summaryAmount');
+    const summaryTotal = document.getElementById('summaryTotal');
+    const summaryMonthly = document.getElementById('summaryMonthly');
+    const sliderFill = document.getElementById('sliderFill');
+
+    function formatCZK(val) {
+      return val.toLocaleString('cs-CZ') + ' Kč';
+    }
+
+    function update() {
+      if (amount < MIN) amount = MIN;
+      if (amount > MAX) amount = MAX;
+      amountDisplay.textContent = formatCZK(amount);
+      summaryAmount.textContent = formatCZK(amount);
+
+      const total = Math.round(amount * 1.75);
+      const monthly = Math.round(total / 3);
+      summaryTotal.textContent = formatCZK(total);
+      summaryMonthly.textContent = formatCZK(monthly);
+
+      const pct = ((amount - MIN) / (MAX - MIN)) * 100;
+      sliderFill.style.width = pct + '%';
+    }
+
+    document.getElementById('btnMinus').addEventListener('click', () => { amount -= STEP; update(); });
+    document.getElementById('btnPlus').addEventListener('click', () => { amount += STEP; update(); });
+    document.getElementById('arrowLeft').addEventListener('click', () => { amount -= STEP; update(); });
+    document.getElementById('arrowRight').addEventListener('click', () => { amount += STEP; update(); });
+
+    update();
+  </script>
+</body>
+</html>
