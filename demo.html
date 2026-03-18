@@ -7,530 +7,123 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #f5f5f0; color: #1a1a1a; }
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #f5f5f0;
-      color: #1a1a1a;
-    }
-
-    /* Header */
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 3rem;
-      position: relative;
-      z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem; position: relative; z-index: 10;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-    }
-
-    .logo-text {
-      font-size: 1.1rem;
-      font-weight: 800;
-      line-height: 1.1;
-      color: #2d8a3e;
-      text-transform: uppercase;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
+    .logo { display: flex; align-items: center; gap: 0.6rem; }
+    .logo img { height: 40px; }
+    .header-right { display: flex; align-items: center; gap: 2rem; }
     .phone {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #7b2d8e;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      color: #7b2d8e; font-weight: 600; font-size: 0.95rem; text-decoration: none;
     }
+    .login-link { color: #7b2d8e; font-weight: 700; font-size: 0.9rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; }
+    .menu-btn { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .menu-btn span { width: 28px; height: 2.5px; background: #1a1a1a; border-radius: 2px; }
 
-    .phone svg {
-      width: 18px;
-      height: 18px;
-    }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 80px); position: relative; }
+    .hero-left { padding: 2rem 3rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+    .hero-title { font-size: 2.5rem; font-weight: 400; line-height: 1.2; color: #2d8a3e; margin-bottom: 2.5rem; }
+    .hero-title strong { font-weight: 900; display: block; }
 
-    .login-link {
-      color: #7b2d8e;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .menu-btn {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .menu-btn span {
-      width: 28px;
-      height: 2.5px;
-      background: #1a1a1a;
-      border-radius: 2px;
-    }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - 80px);
-      position: relative;
-    }
-
-    .hero-left {
-      padding: 2rem 3rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: 400;
-      line-height: 1.2;
-      color: #2d8a3e;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-title strong {
-      font-weight: 900;
-      display: block;
-    }
-
-    /* Calculator card */
     .calculator {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-      max-width: 520px;
+      background: #ffffff; border-radius: 16px; padding: 2rem 2.5rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06); max-width: 560px;
     }
+    .calc-question { font-size: 1.3rem; color: #6b7280; margin-bottom: 1.5rem; }
+    .calc-question strong { color: #7b2d8e; font-weight: 700; }
 
-    .calc-question {
-      font-size: 1.2rem;
-      color: #6b7280;
-      margin-bottom: 1.5rem;
-    }
-
-    .calc-question strong {
-      color: #7b2d8e;
-      font-weight: 700;
-    }
-
-    /* Slider area */
-    .slider-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 0.5rem;
-      position: relative;
-    }
-
+    .slider-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
     .slider-btn {
-      width: 36px;
-      height: 36px;
-      border: 2px solid #7b2d8e;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.2rem;
-      color: #7b2d8e;
-      transition: all 0.2s;
-      flex-shrink: 0;
-      font-weight: 600;
+      width: 40px; height: 40px; border: 2px solid #7b2d8e; background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.3rem; color: #7b2d8e; transition: all 0.2s; flex-shrink: 0; font-weight: 600;
     }
+    .slider-btn:hover { background: #7b2d8e; color: #fff; }
 
-    .slider-btn:hover {
-      background: #7b2d8e;
-      color: #fff;
-    }
-
-    .slider-container {
-      flex: 1;
-      position: relative;
-      height: 44px;
-      display: flex;
-      align-items: center;
-    }
-
-    /* Custom range slider */
-    .range-input {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 8px;
-      border-radius: 4px;
-      background: #e5e7eb;
-      outline: none;
-      cursor: pointer;
-      position: relative;
-      z-index: 2;
-    }
-
-    .range-input::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 0;
-      height: 0;
-      cursor: pointer;
-    }
-
-    .range-input::-moz-range-thumb {
-      width: 0;
-      height: 0;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* Track fill overlay */
-    .slider-track-wrapper {
-      position: relative;
-      flex: 1;
-      height: 44px;
-      display: flex;
-      align-items: center;
-    }
-
+    .slider-track-wrapper { flex: 1; position: relative; height: 50px; display: flex; align-items: center; }
     .slider-track-bg {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: #e5e7eb;
-      border-radius: 4px;
-      top: 50%;
-      transform: translateY(-50%);
+      position: absolute; left: 0; right: 0; height: 8px; background: #e5e7eb;
+      border-radius: 4px; top: 50%; transform: translateY(-50%);
     }
-
     .slider-track-fill {
-      position: absolute;
-      left: 0;
-      height: 8px;
-      background: #7b2d8e;
-      border-radius: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      transition: width 0.05s;
+      position: absolute; left: 0; height: 8px; background: #7b2d8e;
+      border-radius: 4px; top: 50%; transform: translateY(-50%); pointer-events: none;
     }
-
     .range-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 8px;
-      background: transparent;
-      outline: none;
-      cursor: pointer;
-      position: relative;
-      z-index: 3;
-      margin: 0;
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 8px; background: transparent; outline: none;
+      cursor: pointer; position: relative; z-index: 3; margin: 0;
     }
-
     .range-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #7b2d8e;
-      cursor: grab;
-      border: 3px solid #fff;
-      box-shadow: 0 2px 6px rgba(123, 45, 142, 0.3);
+      -webkit-appearance: none; appearance: none; width: 0; height: 0; cursor: grab;
     }
+    .range-slider::-moz-range-thumb { width: 0; height: 0; border: none; }
 
-    .range-slider::-webkit-slider-thumb:active {
-      cursor: grabbing;
-      transform: scale(1.1);
+    .slider-value-box {
+      position: absolute; top: 50%; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 0.5rem;
+      background: #fff; border: 2px solid #7b2d8e; border-radius: 8px;
+      padding: 0.4rem 0.8rem; font-weight: 700; font-size: 1.1rem; color: #7b2d8e;
+      white-space: nowrap; cursor: grab; z-index: 5; user-select: none;
+      min-width: 140px; justify-content: center;
+      box-shadow: 0 2px 8px rgba(123, 45, 142, 0.15);
     }
-
-    .range-slider::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #7b2d8e;
-      cursor: grab;
-      border: 3px solid #fff;
-      box-shadow: 0 2px 6px rgba(123, 45, 142, 0.3);
+    .slider-value-box .arrow {
+      color: #7b2d8e; cursor: pointer; font-size: 1.3rem; font-weight: 700;
+      line-height: 1; user-select: none; opacity: 0.7;
     }
-
-    /* Value bubble on slider */
-    .slider-bubble {
-      position: absolute;
-      top: -38px;
-      background: #fff;
-      border: 2px solid #7b2d8e;
-      border-radius: 6px;
-      padding: 3px 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #7b2d8e;
-      white-space: nowrap;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .slider-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -7px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 7px solid #7b2d8e;
-    }
-
-    .slider-bubble::before {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid #fff;
-      z-index: 1;
-    }
-
-    /* Value display with arrows */
-    .slider-value {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #fff;
-      border: 2px solid #7b2d8e;
-      border-radius: 8px;
-      padding: 0.4rem 0.8rem;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #7b2d8e;
-      min-width: 150px;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .slider-value .arrow {
-      color: #7b2d8e;
-      cursor: pointer;
-      font-size: 1.2rem;
-      font-weight: 700;
-      user-select: none;
-      line-height: 1;
-    }
-
-    .slider-value .arrow:hover {
-      opacity: 0.6;
-    }
+    .slider-value-box .arrow:hover { opacity: 1; }
 
     .slider-range {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 1.5rem;
-      padding: 0 44px;
+      display: flex; justify-content: space-between; font-size: 0.9rem; color: #9ca3af;
+      margin-bottom: 1.5rem; padding: 0 48px;
     }
 
-    /* Discount code */
-    .discount-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .discount-label {
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: #7b2d8e;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
+    .discount-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .discount-label { font-weight: 700; font-size: 0.85rem; color: #7b2d8e; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
     .discount-input {
-      border: none;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 0.4rem 0;
-      font-size: 0.95rem;
-      color: #9ca3af;
-      outline: none;
-      font-family: inherit;
-      width: 120px;
+      border: none; border-bottom: 1px solid #e5e7eb; padding: 0.4rem 0;
+      font-size: 0.95rem; color: #9ca3af; outline: none; font-family: inherit; width: 120px;
     }
 
-    /* CTA button */
     .cta-btn {
-      background: #c0392b;
-      color: #fff;
-      border: none;
-      padding: 1rem 2.5rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      transition: background 0.2s;
+      background: #c0392b; color: #fff; border: none; padding: 1rem 2.5rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; transition: background 0.2s;
     }
+    .cta-btn:hover { background: #a93226; }
 
-    .cta-btn:hover {
-      background: #a93226;
-    }
-
-    /* Loan summary */
     .loan-summary {
-      position: absolute;
-      right: 52%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.97);
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      min-width: 280px;
-      z-index: 5;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      position: absolute; right: 50%; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.97); border-radius: 12px; padding: 1.5rem 2rem;
+      min-width: 280px; z-index: 5; box-shadow: 0 4px 24px rgba(0,0,0,0.1);
     }
-
     .summary-section-title {
-      font-weight: 800;
-      font-size: 0.85rem;
-      color: #2d8a3e;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 0.8rem;
-      margin-bottom: 0.3rem;
+      font-weight: 800; font-size: 0.85rem; color: #2d8a3e; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-top: 0.8rem; margin-bottom: 0.3rem;
     }
+    .summary-section-title:first-child { margin-top: 0; }
+    .summary-row { display: flex; justify-content: space-between; padding: 0.35rem 0; font-size: 0.95rem; }
+    .summary-row .label { color: #6b7280; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; }
+    .summary-row .value { color: #6b7280; font-weight: 500; }
+    .summary-row .value.green { color: #2d8a3e; font-weight: 700; }
 
-    .summary-section-title:first-child {
-      margin-top: 0;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.35rem 0;
-      font-size: 0.95rem;
-    }
-
-    .summary-row .label {
-      color: #6b7280;
-      font-weight: 500;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .summary-row .value {
-      color: #6b7280;
-      font-weight: 500;
-    }
-
-    .summary-row .value.green {
-      color: #2d8a3e;
-      font-weight: 700;
-    }
-
-    /* Hero right - image */
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Diagonal clip for the hero image */
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero-right::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -1px;
-      width: 80px;
-      height: 100%;
-      background: #f5f5f0;
-      clip-path: polygon(0 0, 100% 0, 0 100%);
-      z-index: 2;
+      content: ''; position: absolute; top: 0; left: -1px;
+      width: 80px; height: 100%; background: #f5f5f0;
+      clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 2;
     }
 
-    .hero-image-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(150deg, #f0e6c8 0%, #d4b87a 25%, #a67c3d 50%, #6b8f5e 75%, #3d6b35 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .bottom-banner { text-align: center; padding: 2rem; background: #f5f5f0; }
+    .bottom-banner h2 { font-size: 1.8rem; font-weight: 400; color: #1a1a1a; text-transform: uppercase; letter-spacing: 0.05em; }
+    .bottom-banner h2 strong { font-weight: 900; font-style: italic; }
 
-    .hero-image-placeholder span {
-      background: rgba(255,255,255,0.8);
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
-
-    /* Bottom banner */
-    .bottom-banner {
-      text-align: center;
-      padding: 2rem;
-      background: #f5f5f0;
-    }
-
-    .bottom-banner h2 {
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: #1a1a1a;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .bottom-banner h2 strong {
-      font-weight: 900;
-      font-style: italic;
-    }
-
-    /* Duration section */
-    .calc-section {
-      margin-top: 1.5rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    /* Responsive */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-right { min-height: 300px; }
@@ -541,255 +134,109 @@
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header class="header">
     <div class="logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <!-- Simplified tree icon -->
-        <circle cx="20" cy="12" r="10" fill="#2d8a3e" opacity="0.3"/>
-        <circle cx="14" cy="16" r="8" fill="#2d8a3e" opacity="0.4"/>
-        <circle cx="26" cy="16" r="8" fill="#2d8a3e" opacity="0.4"/>
-        <circle cx="20" cy="10" r="7" fill="#2d8a3e" opacity="0.5"/>
-        <rect x="18.5" y="20" width="3" height="12" rx="1.5" fill="#5a3e1b"/>
-        <line x1="15" y1="35" x2="25" y2="35" stroke="#5a3e1b" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <div class="logo-text">Cool<br>Credit</div>
+      <img src="images/logo-cool-credit.dfbe1766.svg" alt="Cool Credit">
     </div>
     <div class="header-right">
       <a href="tel:226219946" class="phone">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
         226 219 946
       </a>
       <a href="#" class="login-link">Přihlášení</a>
-      <div class="menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <div class="menu-btn"><span></span><span></span><span></span></div>
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-left">
-      <h1 class="hero-title">
-        Půjčka na splátky<br>
-        <strong>jednoduše</strong>
-      </h1>
-
+      <h1 class="hero-title">Půjčka na splátky<br><strong>jednoduše</strong></h1>
       <div class="calculator">
-        <!-- Amount section -->
         <p class="calc-question"><strong>Kolik peněz</strong> budete potřebovat?</p>
-
         <div class="slider-row">
-          <button class="slider-btn" id="amountMinus">−</button>
-          <div class="slider-track-wrapper">
+          <button class="slider-btn" id="btnMinus">−</button>
+          <div class="slider-track-wrapper" id="trackWrapper">
             <div class="slider-track-bg"></div>
-            <div class="slider-track-fill" id="amountFill"></div>
-            <input type="range" class="range-slider" id="amountSlider" min="1000" max="30000" step="100" value="25400">
-            <div class="slider-bubble" id="amountBubble">25 400 Kč</div>
-          </div>
-          <div class="slider-value">
-            <span class="arrow" id="amountArrowLeft">‹</span>
-            <span id="amountDisplay">25 400 Kč</span>
-            <span class="arrow" id="amountArrowRight">›</span>
-          </div>
-          <button class="slider-btn" id="amountPlus">+</button>
-        </div>
-
-        <div class="slider-range">
-          <span>od 1 000 Kč</span>
-          <span>do 30 000 Kč</span>
-        </div>
-
-        <!-- Duration section -->
-        <div class="calc-section">
-          <p class="calc-question"><strong>Na jak</strong> dlouho?</p>
-
-          <div class="slider-row">
-            <button class="slider-btn" id="daysMinus">−</button>
-            <div class="slider-track-wrapper">
-              <div class="slider-track-bg"></div>
-              <div class="slider-track-fill" id="daysFill"></div>
-              <input type="range" class="range-slider" id="daysSlider" min="5" max="30" step="1" value="13">
-              <div class="slider-bubble" id="daysBubble">13 dní</div>
+            <div class="slider-track-fill" id="trackFill"></div>
+            <input type="range" class="range-slider" id="amountSlider" min="1000" max="30000" step="100" value="15000">
+            <div class="slider-value-box" id="valueBox">
+              <span class="arrow" id="arrowLeft">‹</span>
+              <span id="amountDisplay">15 000 Kč</span>
+              <span class="arrow" id="arrowRight">›</span>
             </div>
-            <div class="slider-value">
-              <span class="arrow" id="daysArrowLeft">‹</span>
-              <span id="daysDisplay">13 dní</span>
-              <span class="arrow" id="daysArrowRight">›</span>
-            </div>
-            <button class="slider-btn" id="daysPlus">+</button>
           </div>
-
-          <div class="slider-range">
-            <span>od 5 dní</span>
-            <span>do 30 dní</span>
-          </div>
+          <button class="slider-btn" id="btnPlus">+</button>
         </div>
-
+        <div class="slider-range"><span>od 1 000 Kč</span><span>do 30 000 Kč</span></div>
         <div class="discount-row">
           <span class="discount-label">Slevový kód</span>
           <input type="text" class="discount-input" placeholder="Zadejte">
         </div>
-
         <button class="cta-btn">Požádat →</button>
       </div>
     </div>
 
-    <!-- Loan summary overlay -->
     <div class="loan-summary" id="loanSummary">
       <div class="summary-section-title">Půjčka</div>
-      <div class="summary-row">
-        <span class="label">Peníze vám pošleme</span>
-        <span class="value" id="summarySend">do 10 min</span>
-      </div>
-      <div class="summary-row">
-        <span class="label">Datum splacení</span>
-        <span class="value" id="summaryDate">31. 3. 2026</span>
-      </div>
-      <div class="summary-row">
-        <span class="label">RPSN</span>
-        <span class="value" id="summaryRpsn">3 091 %</span>
-      </div>
-      <div class="summary-row">
-        <span class="label">Poplatek</span>
-        <span class="value" id="summaryFee">6 350 Kč</span>
-      </div>
+      <div class="summary-row"><span class="label">Peníze vám pošleme</span><span class="value">do 10 min</span></div>
+      <div class="summary-row"><span class="label">RPSN</span><span class="value" id="summaryRpsn">3 091 %</span></div>
+      <div class="summary-row"><span class="label">Poplatek</span><span class="value" id="summaryFee">3 750 Kč</span></div>
       <div class="summary-section-title" style="color: #2d8a3e;">Sleva</div>
-      <div class="summary-row">
-        <span class="label">Celkem zaplatíte</span>
-        <span class="value green" id="summaryTotal">31 750 Kč</span>
-      </div>
+      <div class="summary-row"><span class="label">Celkem zaplatíte</span><span class="value green" id="summaryTotal">18 750 Kč</span></div>
     </div>
 
     <div class="hero-right">
-      <!-- Replace with hero-image.jpg for actual image -->
-      <img src="hero-image.jpg" alt="Žena se psem v přírodě" class="hero-image" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="hero-image-placeholder" style="display:none;">
-        <span>Přidejte hero-image.jpg do složky projektu</span>
-      </div>
+      <img src="images/hero.webp" alt="Žena se psem v přírodě">
     </div>
   </section>
 
-  <!-- Bottom banner -->
-  <div class="bottom-banner">
-    <h2>Stačí opravdu <strong>málo</strong></h2>
-  </div>
+  <div class="bottom-banner"><h2>Stačí opravdu <strong>málo</strong></h2></div>
 
   <script>
-    // Amount slider
-    const AMOUNT_MIN = 1000;
-    const AMOUNT_MAX = 30000;
-    const AMOUNT_STEP = 100;
-
-    // Days slider
-    const DAYS_MIN = 5;
-    const DAYS_MAX = 30;
-    const DAYS_STEP = 1;
-
-    const amountSlider = document.getElementById('amountSlider');
+    const MIN = 1000, MAX = 30000, STEP = 100;
+    const slider = document.getElementById('amountSlider');
+    const trackFill = document.getElementById('trackFill');
+    const valueBox = document.getElementById('valueBox');
     const amountDisplay = document.getElementById('amountDisplay');
-    const amountBubble = document.getElementById('amountBubble');
-    const amountFill = document.getElementById('amountFill');
-
-    const daysSlider = document.getElementById('daysSlider');
-    const daysDisplay = document.getElementById('daysDisplay');
-    const daysBubble = document.getElementById('daysBubble');
-    const daysFill = document.getElementById('daysFill');
-
     const summaryTotal = document.getElementById('summaryTotal');
     const summaryFee = document.getElementById('summaryFee');
-    const summaryRpsn = document.getElementById('summaryRpsn');
-    const summaryDate = document.getElementById('summaryDate');
+    const trackWrapper = document.getElementById('trackWrapper');
 
-    function formatCZK(val) {
-      return val.toLocaleString('cs-CZ') + ' Kč';
-    }
+    function formatCZK(val) { return val.toLocaleString('cs-CZ') + ' Kč'; }
 
-    function updateSliderVisuals(slider, fill, bubble, formatFn) {
-      const pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-      fill.style.width = pct + '%';
+    function update() {
+      let amount = parseInt(slider.value);
+      if (amount < MIN) { amount = MIN; slider.value = MIN; }
+      if (amount > MAX) { amount = MAX; slider.value = MAX; }
 
-      // Position bubble above thumb
-      const thumbOffset = (pct / 100) * slider.offsetWidth;
-      bubble.style.left = thumbOffset + 'px';
-      bubble.textContent = formatFn(parseInt(slider.value));
-    }
-
-    function updateCalculation() {
-      const amount = parseInt(amountSlider.value);
-      const days = parseInt(daysSlider.value);
-
-      // Display values
       amountDisplay.textContent = formatCZK(amount);
-      daysDisplay.textContent = days + ' dní';
+      const pct = ((amount - MIN) / (MAX - MIN)) * 100;
+      trackFill.style.width = pct + '%';
 
-      // Calculate
+      // Position value box on the track
+      const wrapperWidth = trackWrapper.offsetWidth;
+      const boxWidth = valueBox.offsetWidth;
+      const thumbPos = (pct / 100) * wrapperWidth;
+      const clampedLeft = Math.max(boxWidth / 2, Math.min(thumbPos, wrapperWidth - boxWidth / 2));
+      valueBox.style.left = clampedLeft + 'px';
+
+      // Calculate loan
       const fee = Math.round(amount * 0.25);
       const total = amount + fee;
-      const rpsn = Math.round((fee / amount) * (365 / days) * 100);
-
       summaryFee.textContent = formatCZK(fee);
       summaryTotal.textContent = formatCZK(total);
-      summaryRpsn.textContent = rpsn.toLocaleString('cs-CZ') + ' %';
-
-      // Calculate due date
-      const dueDate = new Date();
-      dueDate.setDate(dueDate.getDate() + days);
-      summaryDate.textContent = dueDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric' });
-
-      // Update visuals
-      updateSliderVisuals(amountSlider, amountFill, amountBubble, (v) => formatCZK(v));
-      updateSliderVisuals(daysSlider, daysFill, daysBubble, (v) => v + ' dní');
     }
 
-    // Amount controls
-    amountSlider.addEventListener('input', updateCalculation);
-    document.getElementById('amountMinus').addEventListener('click', () => {
-      amountSlider.value = Math.max(AMOUNT_MIN, parseInt(amountSlider.value) - AMOUNT_STEP);
-      updateCalculation();
-    });
-    document.getElementById('amountPlus').addEventListener('click', () => {
-      amountSlider.value = Math.min(AMOUNT_MAX, parseInt(amountSlider.value) + AMOUNT_STEP);
-      updateCalculation();
-    });
-    document.getElementById('amountArrowLeft').addEventListener('click', () => {
-      amountSlider.value = Math.max(AMOUNT_MIN, parseInt(amountSlider.value) - AMOUNT_STEP);
-      updateCalculation();
-    });
-    document.getElementById('amountArrowRight').addEventListener('click', () => {
-      amountSlider.value = Math.min(AMOUNT_MAX, parseInt(amountSlider.value) + AMOUNT_STEP);
-      updateCalculation();
-    });
+    slider.addEventListener('input', update);
+    document.getElementById('btnMinus').addEventListener('click', () => { slider.value = Math.max(MIN, parseInt(slider.value) - STEP); update(); });
+    document.getElementById('btnPlus').addEventListener('click', () => { slider.value = Math.min(MAX, parseInt(slider.value) + STEP); update(); });
+    document.getElementById('arrowLeft').addEventListener('click', () => { slider.value = Math.max(MIN, parseInt(slider.value) - STEP); update(); });
+    document.getElementById('arrowRight').addEventListener('click', () => { slider.value = Math.min(MAX, parseInt(slider.value) + STEP); update(); });
 
-    // Days controls
-    daysSlider.addEventListener('input', updateCalculation);
-    document.getElementById('daysMinus').addEventListener('click', () => {
-      daysSlider.value = Math.max(DAYS_MIN, parseInt(daysSlider.value) - DAYS_STEP);
-      updateCalculation();
-    });
-    document.getElementById('daysPlus').addEventListener('click', () => {
-      daysSlider.value = Math.min(DAYS_MAX, parseInt(daysSlider.value) + DAYS_STEP);
-      updateCalculation();
-    });
-    document.getElementById('daysArrowLeft').addEventListener('click', () => {
-      daysSlider.value = Math.max(DAYS_MIN, parseInt(daysSlider.value) - DAYS_STEP);
-      updateCalculation();
-    });
-    document.getElementById('daysArrowRight').addEventListener('click', () => {
-      daysSlider.value = Math.min(DAYS_MAX, parseInt(daysSlider.value) + DAYS_STEP);
-      updateCalculation();
-    });
-
-    // Initial calculation
-    updateCalculation();
-
-    // Recalculate on window resize (for bubble positioning)
-    window.addEventListener('resize', updateCalculation);
+    update();
+    window.addEventListener('resize', update);
   </script>
 </body>
 </html>
