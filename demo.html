@@ -183,6 +183,24 @@
             <button class="slider-btn" id="btnPlus">+</button>
           </div>
           <div class="slider-range"><span>od 1 000 Kč</span><span>do 30 000 Kč</span></div>
+          <div style="margin-top: 1rem; padding-top: 1.2rem; border-top: 1px solid #f0f0f0;">
+            <p class="calc-question"><strong>Na jak</strong> dlouho?</p>
+            <div class="slider-row">
+              <button class="slider-btn" id="daysMinus">−</button>
+              <div class="slider-track-wrapper" id="daysTrackWrapper">
+                <div class="slider-track-bg"></div>
+                <div class="slider-track-fill" id="daysFill"></div>
+                <input type="range" class="range-slider" id="daysSlider" min="5" max="30" step="1" value="13">
+                <div class="slider-value-box" id="daysValueBox">
+                  <span class="arrow">‹</span>
+                  <span id="daysDisplay">13 dní</span>
+                  <span class="arrow">›</span>
+                </div>
+              </div>
+              <button class="slider-btn" id="daysPlus">+</button>
+            </div>
+            <div class="slider-range"><span>od 5 dní</span><span>do 30 dní</span></div>
+          </div>
           <div class="discount-row">
             <span class="discount-label">Slevový kód</span>
             <input type="text" class="discount-input" placeholder="Zadejte">
@@ -208,85 +226,81 @@
   <div class="bottom-banner"><h2>Stačí opravdu <strong>málo</strong></h2></div>
 
   <script>
-    const MIN = 1000, MAX = 30000, STEP = 100;
-    const slider = document.getElementById('amountSlider');
-    const trackFill = document.getElementById('trackFill');
-    const valueBox = document.getElementById('valueBox');
-    const amountDisplay = document.getElementById('amountDisplay');
+    // Amount slider
+    const AMIN = 1000, AMAX = 30000, ASTEP = 100;
+    const aSlider = document.getElementById('amountSlider');
+    const aFill = document.getElementById('trackFill');
+    const aBox = document.getElementById('valueBox');
+    const aDisplay = document.getElementById('amountDisplay');
+    const aWrapper = document.getElementById('trackWrapper');
+
+    // Days slider
+    const DMIN = 5, DMAX = 30, DSTEP = 1;
+    const dSlider = document.getElementById('daysSlider');
+    const dFill = document.getElementById('daysFill');
+    const dBox = document.getElementById('daysValueBox');
+    const dDisplay = document.getElementById('daysDisplay');
+    const dWrapper = document.getElementById('daysTrackWrapper');
+
     const summaryTotal = document.getElementById('summaryTotal');
     const summaryFee = document.getElementById('summaryFee');
-    const trackWrapper = document.getElementById('trackWrapper');
 
     function formatCZK(val) { return val.toLocaleString('cs-CZ') + ' Kč'; }
 
+    function positionBox(slider, fill, box, wrapper, min, max) {
+      const pct = ((slider.value - min) / (max - min)) * 100;
+      fill.style.width = pct + '%';
+      const w = wrapper.offsetWidth;
+      const bw = box.offsetWidth;
+      const pos = (pct / 100) * w;
+      box.style.left = Math.max(bw / 2, Math.min(pos, w - bw / 2)) + 'px';
+    }
+
     function update() {
-      let amount = parseInt(slider.value);
-      if (amount < MIN) { amount = MIN; slider.value = MIN; }
-      if (amount > MAX) { amount = MAX; slider.value = MAX; }
-
-      amountDisplay.textContent = formatCZK(amount);
-      const pct = ((amount - MIN) / (MAX - MIN)) * 100;
-      trackFill.style.width = pct + '%';
-
-      // Position value box on the track
-      const wrapperWidth = trackWrapper.offsetWidth;
-      const boxWidth = valueBox.offsetWidth;
-      const thumbPos = (pct / 100) * wrapperWidth;
-      const clampedLeft = Math.max(boxWidth / 2, Math.min(thumbPos, wrapperWidth - boxWidth / 2));
-      valueBox.style.left = clampedLeft + 'px';
-
-      // Calculate loan
-      const fee = Math.round(amount * 0.25);
-      const total = amount + fee;
+      const amount = parseInt(aSlider.value);
+      const days = parseInt(dSlider.value);
+      aDisplay.textContent = formatCZK(amount);
+      dDisplay.textContent = days + ' dní';
+      positionBox(aSlider, aFill, aBox, aWrapper, AMIN, AMAX);
+      positionBox(dSlider, dFill, dBox, dWrapper, DMIN, DMAX);
+      const fee = Math.round(amount * (days / 30) * 0.25);
       summaryFee.textContent = formatCZK(fee);
-      summaryTotal.textContent = formatCZK(total);
+      summaryTotal.textContent = formatCZK(amount + fee);
     }
 
-    slider.addEventListener('input', update);
-    document.getElementById('btnMinus').addEventListener('click', () => { slider.value = Math.max(MIN, parseInt(slider.value) - STEP); update(); });
-    document.getElementById('btnPlus').addEventListener('click', () => { slider.value = Math.min(MAX, parseInt(slider.value) + STEP); update(); });
+    // Slider input events
+    aSlider.addEventListener('input', update);
+    dSlider.addEventListener('input', update);
 
-    // Make value box draggable - forward mouse events to range input
-    let isDragging = false;
-    valueBox.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      e.preventDefault();
-      updateFromMouse(e);
-    });
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      updateFromMouse(e);
-    });
-    document.addEventListener('mouseup', () => { isDragging = false; });
+    // +/- buttons
+    document.getElementById('btnMinus').addEventListener('click', () => { aSlider.value = Math.max(AMIN, parseInt(aSlider.value) - ASTEP); update(); });
+    document.getElementById('btnPlus').addEventListener('click', () => { aSlider.value = Math.min(AMAX, parseInt(aSlider.value) + ASTEP); update(); });
+    document.getElementById('daysMinus').addEventListener('click', () => { dSlider.value = Math.max(DMIN, parseInt(dSlider.value) - DSTEP); update(); });
+    document.getElementById('daysPlus').addEventListener('click', () => { dSlider.value = Math.min(DMAX, parseInt(dSlider.value) + DSTEP); update(); });
 
-    // Touch support for value box drag
-    valueBox.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      updateFromTouch(e);
-    }, { passive: true });
-    document.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      updateFromTouch(e);
-    }, { passive: true });
-    document.addEventListener('touchend', () => { isDragging = false; });
-
-    function updateFromMouse(e) {
-      const rect = trackWrapper.getBoundingClientRect();
-      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-      const pct = x / rect.width;
-      slider.value = Math.round((MIN + pct * (MAX - MIN)) / STEP) * STEP;
-      update();
+    // Draggable value boxes
+    function makeDraggable(box, wrapper, slider, min, max, step) {
+      let dragging = false;
+      function startDrag(e) { dragging = true; e.preventDefault(); onDrag(e); }
+      function onDrag(e) {
+        if (!dragging) return;
+        const cx = e.touches ? e.touches[0].clientX : e.clientX;
+        const rect = wrapper.getBoundingClientRect();
+        const x = Math.max(0, Math.min(cx - rect.left, rect.width));
+        slider.value = Math.round((min + (x / rect.width) * (max - min)) / step) * step;
+        update();
+      }
+      function stopDrag() { dragging = false; }
+      box.addEventListener('mousedown', startDrag);
+      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('mouseup', stopDrag);
+      box.addEventListener('touchstart', (e) => { dragging = true; onDrag(e); }, { passive: false });
+      document.addEventListener('touchmove', (e) => { if (dragging) { e.preventDefault(); onDrag(e); } }, { passive: false });
+      document.addEventListener('touchend', stopDrag);
     }
 
-    function updateFromTouch(e) {
-      const touch = e.touches[0];
-      const rect = trackWrapper.getBoundingClientRect();
-      const x = Math.max(0, Math.min(touch.clientX - rect.left, rect.width));
-      const pct = x / rect.width;
-      slider.value = Math.round((MIN + pct * (MAX - MIN)) / STEP) * STEP;
-      update();
-    }
+    makeDraggable(aBox, aWrapper, aSlider, AMIN, AMAX, ASTEP);
+    makeDraggable(dBox, dWrapper, dSlider, DMIN, DMAX, DSTEP);
 
     update();
     window.addEventListener('resize', update);
