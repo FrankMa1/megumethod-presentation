@@ -383,7 +383,9 @@ claude</code></pre>
         <p class="section-label">Skills</p>
         <h2>Jak vytvořit skill</h2>
         <p style="margin-bottom: 1rem; font-size: 1.15rem;">Markdown soubor v <code>.claude/commands/</code> s touto strukturou:</p>
-        <pre><code># /review-copy
+        <div class="grid-2" style="align-items: start;">
+          <div>
+            <pre style="max-height: 50vh; overflow-y: auto;"><code># /review-copy
 
 ## Cíl
 Zkontroluj texty v projektu.
@@ -400,7 +402,31 @@ Soubor → řádek → problém → návrh
 ## Pravidla
 - České uvozovky „takto"
 - Max 2 věty na odstavec</code></pre>
-        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text-muted);">Pak stačí napsat <code>/review-copy</code> v Claude Code.</p>
+          </div>
+          <div>
+            <h3 style="margin-bottom: 0.8rem;">Framework</h3>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">label</span></div>
+              <div><h3>Název + trigger</h3><p class="muted">Jak se skill spustí</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">flag</span></div>
+              <div><h3>Cíl + proces</h3><p class="muted">Kroky + kde čeká na člověka</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">output</span></div>
+              <div><h3>Výstupní formát</h3><p class="muted">Přesně definovaný výsledek</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">gavel</span></div>
+              <div><h3>Rules + edge cases</h3><p class="muted">Co dělat při chybě</p></div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle"><span class="material-symbols-outlined">verified</span></div>
+              <div><h3>Acceptance test</h3><p class="muted">Snižuje flakiness</p></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
