@@ -377,59 +377,30 @@ claude</code></pre>
       </div>
     </div>
 
-    <!-- SLIDE 7: Skills - Framework na tvorbu -->
+    <!-- SLIDE 7: Skills - Jak vytvořit -->
     <div class="slide" data-slide="7">
       <div class="slide-inner">
         <p class="section-label">Skills</p>
-        <h2>Jak vytvořit kvalitní skill</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.15rem;">Soubor <code>.claude/commands/nazev.md</code> s jasnou strukturou:</p>
-        <div class="grid-2">
-          <div>
-            <pre><code># /review-copy
+        <h2>Jak vytvořit skill</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.15rem;">Markdown soubor v <code>.claude/commands/</code> s touto strukturou:</p>
+        <pre><code># /review-copy
 
 ## Cíl
 Zkontroluj texty v projektu.
 
 ## Proces
-1. Načti všechny textové soubory
+1. Načti textové soubory
 2. Zkontroluj překlepy a gramatiku
-3. ⏸ Ukaž nálezy uživateli
+3. ⏸ Ukaž nálezy uživateli     ← human-in-the-loop
 4. Po schválení oprav
 
-## Výstupní formát
-- Soubor → řádek → problém → návrh
+## Výstup
+Soubor → řádek → problém → návrh
 
-## Rules
+## Pravidla
 - České uvozovky „takto"
-- Max 2 věty na odstavec
-
-## Acceptance test
-- Žádný překlep neprojde</code></pre>
-          </div>
-          <div>
-            <h3 style="margin-bottom: 0.8rem;">Framework</h3>
-            <div class="icon-item" style="margin-bottom: 0.6rem;">
-              <div class="icon-circle"><span class="material-symbols-outlined">label</span></div>
-              <div><h3>Název + trigger</h3><p class="muted">Jak se skill spustí</p></div>
-            </div>
-            <div class="icon-item" style="margin-bottom: 0.6rem;">
-              <div class="icon-circle"><span class="material-symbols-outlined">flag</span></div>
-              <div><h3>Cíl + proces</h3><p class="muted">Kroky + kde čeká na člověka</p></div>
-            </div>
-            <div class="icon-item" style="margin-bottom: 0.6rem;">
-              <div class="icon-circle"><span class="material-symbols-outlined">output</span></div>
-              <div><h3>Výstupní formát</h3><p class="muted">Přesně definovaný výsledek</p></div>
-            </div>
-            <div class="icon-item" style="margin-bottom: 0.6rem;">
-              <div class="icon-circle"><span class="material-symbols-outlined">gavel</span></div>
-              <div><h3>Rules + edge cases</h3><p class="muted">Co dělat při chybě</p></div>
-            </div>
-            <div class="icon-item">
-              <div class="icon-circle"><span class="material-symbols-outlined">verified</span></div>
-              <div><h3>Acceptance test</h3><p class="muted">Snižuje flakiness</p></div>
-            </div>
-          </div>
-        </div>
+- Max 2 věty na odstavec</code></pre>
+        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text-muted);">Pak stačí napsat <code>/review-copy</code> v Claude Code.</p>
       </div>
     </div>
 
