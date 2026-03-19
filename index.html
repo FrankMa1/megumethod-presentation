@@ -323,65 +323,113 @@ claude</code></pre>
       </div>
     </div>
 
-    <!-- SLIDE 6: Skills (circle icons with accent color) -->
+    <!-- SLIDE 6: Skills - Co to je + typy -->
     <div class="slide" data-slide="6">
       <div class="slide-inner">
-        <p class="section-label">Skills</p>
-        <h2>Uložené příkazy pro opakované úkoly</h2>
-        <p style="margin-bottom: 1.2rem; font-size: 1.15rem;">Skills jsou šablony instrukcí, které Claude spustí jedním příkazem.</p>
-        <div class="grid-2">
-          <div class="icon-item">
-            <div class="icon-circle"><span class="material-symbols-outlined">spellcheck</span></div>
-            <div><h3>/review-copy</h3><p class="muted">Kontrola textů, překlepů a konzistence</p></div>
+        <div class="slide-two-col">
+          <div>
+            <p class="section-label">Skills</p>
+            <h2>Instrukce + kontext + pravidla</h2>
+            <p style="margin-bottom: 1rem; font-size: 1.15rem;">Skill = <code>skill.md</code> s instrukcemi + volitelné reference (šablony, data, brand guidelines). Agent dostává jen nezbytný kontext (<strong>progressive disclosure</strong>).</p>
+            <h3 style="margin-top: 1.2rem; margin-bottom: 0.6rem;">3 typy skills</h3>
+            <div class="icon-item" style="margin-bottom: 0.8rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">replay</span></div>
+              <div><h3>Opakovatelné úkoly</h3><p class="muted">Commit, review, deploy, kontrola textů</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.8rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">account_tree</span></div>
+              <div><h3>Business procesy</h3><p class="muted">Více kroků, rozhodování, human-in-the-loop</p></div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle"><span class="material-symbols-outlined">brush</span></div>
+              <div><h3>Kreativní workflow</h3><p class="muted">Infografiky, newslettery, posty, design</p></div>
+            </div>
           </div>
-          <div class="icon-item">
-            <div class="icon-circle"><span class="material-symbols-outlined">commit</span></div>
-            <div><h3>/commit-fast</h3><p class="muted">Automatický git commit s vygenerovanou zprávou</p></div>
-          </div>
-          <div class="icon-item">
-            <div class="icon-circle"><span class="material-symbols-outlined">security</span></div>
-            <div><h3>/security-check</h3><p class="muted">OWASP audit bezpečnosti kódu</p></div>
-          </div>
-          <div class="icon-item">
-            <div class="icon-circle"><span class="material-symbols-outlined">merge</span></div>
-            <div><h3>/create-pr</h3><p class="muted">Vytvoří branch, commitne a pošle PR</p></div>
-          </div>
-          <div class="icon-item">
-            <div class="icon-circle"><span class="material-symbols-outlined">image</span></div>
-            <div><h3>/generate-assets</h3><p class="muted">Favicony, PWA ikony a OG obrázky</p></div>
-          </div>
-          <div class="icon-item">
-            <div class="icon-circle"><span class="material-symbols-outlined">palette</span></div>
-            <div><h3>/update-tokens</h3><p class="muted">Hromadná aktualizace design tokenů</p></div>
+          <div>
+            <h3 style="margin-bottom: 0.6rem;">Skills vs. alternativy</h3>
+            <table>
+              <thead><tr><th></th><th>Sdílení</th><th>Flexibilita</th></tr></thead>
+              <tbody>
+                <tr><td style="font-weight:600;">Skills</td><td>Snadné</td><td>Kombinovatelné</td></tr>
+                <tr><td>Projects</td><td>Izolované</td><td>Omezené</td></tr>
+                <tr><td>Plugins</td><td>Balíčky</td><td>Monetizovatelné</td></tr>
+              </tbody>
+            </table>
+            <h3 style="margin-top: 1.2rem; margin-bottom: 0.6rem;">Příklady z komunity</h3>
+            <div class="icon-item" style="margin-bottom: 0.4rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">commit</span></div>
+              <div><h3>/commit-fast</h3></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.4rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">security</span></div>
+              <div><h3>/security-check</h3></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.4rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">merge</span></div>
+              <div><h3>/create-pr</h3></div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle"><span class="material-symbols-outlined">image</span></div>
+              <div><h3>/generate-assets</h3></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 7: Skills - Jak vytvořit -->
+    <!-- SLIDE 7: Skills - Framework na tvorbu -->
     <div class="slide" data-slide="7">
       <div class="slide-inner">
         <p class="section-label">Skills</p>
-        <h2>Jak si vytvořit vlastní skill</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.15rem;">Stačí vytvořit Markdown soubor v <code>.claude/commands/</code> složce projektu.</p>
-        <div class="skills-file-tree">
-          .claude/<br>
-          &nbsp;&nbsp;commands/<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;review-copy.md<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;check-a11y.md<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;generate-assets.md
+        <h2>Jak vytvořit kvalitní skill</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.15rem;">Soubor <code>.claude/commands/nazev.md</code> s jasnou strukturou:</p>
+        <div class="grid-2">
+          <div>
+            <pre><code># /review-copy
+
+## Cíl
+Zkontroluj texty v projektu.
+
+## Proces
+1. Načti všechny textové soubory
+2. Zkontroluj překlepy a gramatiku
+3. ⏸ Ukaž nálezy uživateli
+4. Po schválení oprav
+
+## Výstupní formát
+- Soubor → řádek → problém → návrh
+
+## Rules
+- České uvozovky „takto"
+- Max 2 věty na odstavec
+
+## Acceptance test
+- Žádný překlep neprojde</code></pre>
+          </div>
+          <div>
+            <h3 style="margin-bottom: 0.8rem;">Framework</h3>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">label</span></div>
+              <div><h3>Název + trigger</h3><p class="muted">Jak se skill spustí</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">flag</span></div>
+              <div><h3>Cíl + proces</h3><p class="muted">Kroky + kde čeká na člověka</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">output</span></div>
+              <div><h3>Výstupní formát</h3><p class="muted">Přesně definovaný výsledek</p></div>
+            </div>
+            <div class="icon-item" style="margin-bottom: 0.6rem;">
+              <div class="icon-circle"><span class="material-symbols-outlined">gavel</span></div>
+              <div><h3>Rules + edge cases</h3><p class="muted">Co dělat při chybě</p></div>
+            </div>
+            <div class="icon-item">
+              <div class="icon-circle"><span class="material-symbols-outlined">verified</span></div>
+              <div><h3>Acceptance test</h3><p class="muted">Snižuje flakiness</p></div>
+            </div>
+          </div>
         </div>
-        <p style="margin: 1rem 0 0.5rem; font-size: 1rem; font-weight: 600; color: var(--text);">Příklad: <code>review-copy.md</code></p>
-        <pre><code># Kontrola copy
-
-Projdi všechny texty v tomto projektu a zkontroluj:
-- Překlepy a gramatiku
-- Konzistenci terminologie
-- Správné uvozovky „české"
-- Delší texty rozděl na kratší odstavce
-
-Výstup: seznam nalezených problémů s návrhem oprav.</code></pre>
-        <p style="margin-top: 0.8rem; font-size: 1rem; color: var(--text-muted);">Pak stačí napsat <code>/review-copy</code> v Claude Code.</p>
       </div>
     </div>
 
